@@ -1,0 +1,396 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		62F0F9FF2210045C00284F8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F0F9FE2210045C00284F8C /* AppDelegate.swift */; };
+		62F0FA012210045C00284F8C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F0FA002210045C00284F8C /* SearchViewController.swift */; };
+		62F0FA042210045C00284F8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62F0FA022210045C00284F8C /* Main.storyboard */; };
+		62F0FA062210045E00284F8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62F0FA052210045E00284F8C /* Assets.xcassets */; };
+		62F0FA092210045E00284F8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62F0FA072210045E00284F8C /* LaunchScreen.storyboard */; };
+		62F0FA11221006DD00284F8C /* GameSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F0FA10221006DD00284F8C /* GameSearchViewModel.swift */; };
+		62F0FA14221007F400284F8C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62F0FA13221007F400284F8C /* Alamofire.framework */; };
+		62F0FA162210080000284F8C /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 62F0FA13221007F400284F8C /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		62F0FA182210084000284F8C /* IGDBClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F0FA172210084000284F8C /* IGDBClient.swift */; };
+		62F0FA1A2210087900284F8C /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F0FA192210087900284F8C /* Secrets.swift */; };
+		62F0FA1C22100F1F00284F8C /* IGDBGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F0FA1B22100F1F00284F8C /* IGDBGame.swift */; };
+		62F0FA1E22101C1300284F8C /* GameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F0FA1D22101C1300284F8C /* GameListViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		62F0FA15221007F800284F8C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				62F0FA162210080000284F8C /* Alamofire.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		62F0F9FB2210045C00284F8C /* MediaTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediaTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		62F0F9FE2210045C00284F8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		62F0FA002210045C00284F8C /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		62F0FA032210045C00284F8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		62F0FA052210045E00284F8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		62F0FA082210045E00284F8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		62F0FA0A2210045E00284F8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62F0FA10221006DD00284F8C /* GameSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSearchViewModel.swift; sourceTree = "<group>"; };
+		62F0FA13221007F400284F8C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		62F0FA172210084000284F8C /* IGDBClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGDBClient.swift; sourceTree = "<group>"; };
+		62F0FA192210087900284F8C /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		62F0FA1B22100F1F00284F8C /* IGDBGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGDBGame.swift; sourceTree = "<group>"; };
+		62F0FA1D22101C1300284F8C /* GameListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		62F0F9F82210045C00284F8C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62F0FA14221007F400284F8C /* Alamofire.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		62F0F9F22210045C00284F8C = {
+			isa = PBXGroup;
+			children = (
+				62F0F9FD2210045C00284F8C /* MediaTracker */,
+				62F0F9FC2210045C00284F8C /* Products */,
+				62F0FA12221007F400284F8C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		62F0F9FC2210045C00284F8C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				62F0F9FB2210045C00284F8C /* MediaTracker.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		62F0F9FD2210045C00284F8C /* MediaTracker */ = {
+			isa = PBXGroup;
+			children = (
+				62F0F9FE2210045C00284F8C /* AppDelegate.swift */,
+				62F0FA1D22101C1300284F8C /* GameListViewController.swift */,
+				62F0FA002210045C00284F8C /* SearchViewController.swift */,
+				62F0FA10221006DD00284F8C /* GameSearchViewModel.swift */,
+				62F0FA1B22100F1F00284F8C /* IGDBGame.swift */,
+				62F0FA172210084000284F8C /* IGDBClient.swift */,
+				62F0FA192210087900284F8C /* Secrets.swift */,
+				62F0FA022210045C00284F8C /* Main.storyboard */,
+				62F0FA052210045E00284F8C /* Assets.xcassets */,
+				62F0FA072210045E00284F8C /* LaunchScreen.storyboard */,
+				62F0FA0A2210045E00284F8C /* Info.plist */,
+			);
+			path = MediaTracker;
+			sourceTree = "<group>";
+		};
+		62F0FA12221007F400284F8C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				62F0FA13221007F400284F8C /* Alamofire.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		62F0F9FA2210045C00284F8C /* MediaTracker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 62F0FA0D2210045E00284F8C /* Build configuration list for PBXNativeTarget "MediaTracker" */;
+			buildPhases = (
+				62F0FA15221007F800284F8C /* CopyFiles */,
+				62F0F9F72210045C00284F8C /* Sources */,
+				62F0F9F82210045C00284F8C /* Frameworks */,
+				62F0F9F92210045C00284F8C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MediaTracker;
+			productName = MediaTracker;
+			productReference = 62F0F9FB2210045C00284F8C /* MediaTracker.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		62F0F9F32210045C00284F8C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "Dylan Elliott";
+				TargetAttributes = {
+					62F0F9FA2210045C00284F8C = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = 62F0F9F62210045C00284F8C /* Build configuration list for PBXProject "MediaTracker" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 62F0F9F22210045C00284F8C;
+			productRefGroup = 62F0F9FC2210045C00284F8C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				62F0F9FA2210045C00284F8C /* MediaTracker */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		62F0F9F92210045C00284F8C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62F0FA092210045E00284F8C /* LaunchScreen.storyboard in Resources */,
+				62F0FA062210045E00284F8C /* Assets.xcassets in Resources */,
+				62F0FA042210045C00284F8C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		62F0F9F72210045C00284F8C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62F0FA012210045C00284F8C /* SearchViewController.swift in Sources */,
+				62F0FA1A2210087900284F8C /* Secrets.swift in Sources */,
+				62F0FA1C22100F1F00284F8C /* IGDBGame.swift in Sources */,
+				62F0F9FF2210045C00284F8C /* AppDelegate.swift in Sources */,
+				62F0FA182210084000284F8C /* IGDBClient.swift in Sources */,
+				62F0FA1E22101C1300284F8C /* GameListViewController.swift in Sources */,
+				62F0FA11221006DD00284F8C /* GameSearchViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		62F0FA022210045C00284F8C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				62F0FA032210045C00284F8C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		62F0FA072210045E00284F8C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				62F0FA082210045E00284F8C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		62F0FA0B2210045E00284F8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		62F0FA0C2210045E00284F8C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		62F0FA0E2210045E00284F8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6CW3378X23;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = MediaTracker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dylanelliott.MediaTracker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		62F0FA0F2210045E00284F8C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6CW3378X23;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = MediaTracker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dylanelliott.MediaTracker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		62F0F9F62210045C00284F8C /* Build configuration list for PBXProject "MediaTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62F0FA0B2210045E00284F8C /* Debug */,
+				62F0FA0C2210045E00284F8C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		62F0FA0D2210045E00284F8C /* Build configuration list for PBXNativeTarget "MediaTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62F0FA0E2210045E00284F8C /* Debug */,
+				62F0FA0F2210045E00284F8C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 62F0F9F32210045C00284F8C /* Project object */;
+}
