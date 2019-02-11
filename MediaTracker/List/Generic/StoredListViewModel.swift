@@ -8,26 +8,28 @@
 
 import Foundation
 
-class StoredListViewModel<T: Identifiable>: ListViewModel {
-	typealias ItemType = T
+class StoredListViewModel<Model: Identifiable>: ListViewModel {
 	
+	typealias ItemType = Model
+	var mapping: (Model) -> SimpleCellViewModel
 	var cellViewModels: [SimpleCellViewModel]
 	
-	var mapping: (T) -> SimpleCellViewModel
+	var storageManager: StorageManager<Model>
 	
-	init(mapping: @escaping (T) -> SimpleCellViewModel) {
-		cellViewModels = StorageManager.loadList().map(mapping)
+	init(namespace: String, mapping: @escaping (Model) -> SimpleCellViewModel) {
+		storageManager = StorageManager(namespace: namespace)
+		cellViewModels = storageManager.loadList().map(mapping)
 		self.mapping = mapping
 	}
 	
-	func addItem(_ item: T) {
-		StorageManager.add(item)
+	func addItem(_ item: Model) {
+		storageManager.add(item)
 		cellViewModels.append(mapping(item))
 	}
 	
 	func removeItem(at index: Int) {
-		let item: T = StorageManager.loadList()[index]
-		StorageManager.delete(item)
+		let item: Model = storageManager.loadList()[index]
+		storageManager.delete(item)
 		cellViewModels.remove(at: index)
 	}
 }

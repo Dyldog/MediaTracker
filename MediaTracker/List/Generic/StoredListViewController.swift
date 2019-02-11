@@ -14,16 +14,14 @@ protocol SimpleCellViewModelMappable {
 
 class StoredListViewController<Model>: ListViewController<StoredListViewModel<Model>, APISearchViewModel<Model>> where Model: Identifiable, Model: SimpleCellViewModelMappable {
 	
-	init(title: String? = nil, searchRequestFactory: @escaping ((String) -> URLRequest)) {
+	init(namespace: String, searchRequestFactory: @escaping ((String) -> URLRequest)) {
 		super.init()
 		
 		searchViewModel = APISearchViewModel(searchRequestFactory: searchRequestFactory)
 		
-		viewModel = StoredListViewModel(mapping: { (model: Model) in
+		viewModel = StoredListViewModel(namespace: namespace, mapping: { (model: Model) in
 			return model.asSimpleCellViewModel
 		})
-		
-		self.title = title
 	}
 	
 	required init?(coder aDecoder: NSCoder) {

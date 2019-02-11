@@ -12,13 +12,19 @@ protocol Identifiable: Codable, Equatable {
 	var identifier: String { get }
 }
 
-class StorageManager {
+class StorageManager<T: Identifiable> {
 
-	private static func defaultsKey(forType type: Any.Type) -> String {
-		return "\(type.self)"
+	let namespace: String
+	
+	init(namespace: String) {
+		self.namespace = namespace
 	}
 	
-	static func loadList<T>() -> [T] where T: Codable {
+	private func defaultsKey(forType type: Any.Type) -> String {
+		return ["\(namespace)", "\(type.self)"].joined(separator: ".")
+	}
+	
+	func loadList() -> [T] {
 		if let data = UserDefaults.standard.data(forKey: defaultsKey(forType: T.self)),
 			let list = try? JSONDecoder().decode([T].self, from: data) {
 			return list
@@ -27,29 +33,30 @@ class StorageManager {
 		return []
 	}
 	
-	private static func saveList<T>(_ list: [T]) where T: Codable {
-		UserDefaults.standard.set(try! JSONEncoder().encode(list), forKey: "\(T.self)")
+	private func saveList(_ list: [T]) {
+		UserDefaults.standard.set(try! JSONEncoder().encode(list), forKey: defaultsKey(forType: T.self))
+		UserDefaults.standard.synchronize()
 	}
 	
-	@discardableResult static func add<T: Codable>(_ item: T, to list: inout [T]) -> [T] {
+	@discardableResult func add(_ item: T, to list: inout [T]) -> [T] {
 		list.append(item)
 		saveList(list)
 		return list
 	}
 	
-	@discardableResult static func add<T: Codable>(_ item: T) -> [T] {
+	@discardableResult func add(_ item: T) -> [T] {
 		var list: [T] = loadList()
 		add(item, to: &list)
 		return list
 	}
 	
-	@discardableResult static func delete<T: Identifiable>(_ item: T, from list: inout [T]) -> [T] {
+	@discardableResult func delete(_ item: T, from list: inout [T]) -> [T] {
 		list.removeAll(where: { $0.identifier == item.identifier })
 		saveList(list)
 		return list
 	}
 	
-	@discardableResult static func delete<T: Identifiable>(_ item: T) -> [T] {
+	@discardableResult func delete(_ item: T) -> [T] {
 		var list: [T] = loadList()
 		delete(item, from: &list)
 		return list

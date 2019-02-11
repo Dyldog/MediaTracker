@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
-		let gamesListViewController = StoredListViewController<IGDBGame>(title: "Games", searchRequestFactory: IGDBRequests.search)
+		let gamesListViewController = StoredListViewController<IGDBGame>(namespace: "USER_LIST", searchRequestFactory: IGDBRequests.search)
 		
 		let gamesNaviagationController = UINavigationController(rootViewController: gamesListViewController)
 		let tabBarController = UITabBarController(nibName: nil, bundle: nil)
