@@ -7,20 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6217EDCC221161EE00A29361 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6217EDCB221161EE00A29361 /* ListViewModel.swift */; };
+		6217EDCE2211621100A29361 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6217EDCD2211621100A29361 /* ListViewController.swift */; };
+		6217EDD02211626600A29361 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6217EDCF2211626600A29361 /* StorageManager.swift */; };
+		6217EDD2221171AE00A29361 /* StoredListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6217EDD1221171AE00A29361 /* StoredListViewModel.swift */; };
+		6217EDD422117DEA00A29361 /* APISearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6217EDD322117DEA00A29361 /* APISearchViewModel.swift */; };
+		6217EDD622117E0600A29361 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6217EDD522117E0600A29361 /* APIClient.swift */; };
+		6217EDD822117F6400A29361 /* IGDBRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6217EDD722117F6400A29361 /* IGDBRequests.swift */; };
 		62F0F9FF2210045C00284F8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F0F9FE2210045C00284F8C /* AppDelegate.swift */; };
 		62F0FA012210045C00284F8C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F0FA002210045C00284F8C /* SearchViewController.swift */; };
 		62F0FA042210045C00284F8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62F0FA022210045C00284F8C /* Main.storyboard */; };
 		62F0FA062210045E00284F8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62F0FA052210045E00284F8C /* Assets.xcassets */; };
 		62F0FA092210045E00284F8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62F0FA072210045E00284F8C /* LaunchScreen.storyboard */; };
-		62F0FA11221006DD00284F8C /* GameSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F0FA10221006DD00284F8C /* GameSearchViewModel.swift */; };
 		62F0FA14221007F400284F8C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62F0FA13221007F400284F8C /* Alamofire.framework */; };
 		62F0FA162210080000284F8C /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 62F0FA13221007F400284F8C /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		62F0FA182210084000284F8C /* IGDBClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F0FA172210084000284F8C /* IGDBClient.swift */; };
 		62F0FA1A2210087900284F8C /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F0FA192210087900284F8C /* Secrets.swift */; };
 		62F0FA1C22100F1F00284F8C /* IGDBGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F0FA1B22100F1F00284F8C /* IGDBGame.swift */; };
-		62F0FA1E22101C1300284F8C /* GameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F0FA1D22101C1300284F8C /* GameListViewController.swift */; };
+		62F0FA1E22101C1300284F8C /* StoredListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F0FA1D22101C1300284F8C /* StoredListViewController.swift */; };
 		62F0FA2022102C3600284F8C /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F0FA1F22102C3600284F8C /* SearchViewModel.swift */; };
-		62F0FA22221035BE00284F8C /* GameListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F0FA21221035BE00284F8C /* GameListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +41,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6217EDCB221161EE00A29361 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		6217EDCD2211621100A29361 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		6217EDCF2211626600A29361 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		6217EDD1221171AE00A29361 /* StoredListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredListViewModel.swift; sourceTree = "<group>"; };
+		6217EDD322117DEA00A29361 /* APISearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISearchViewModel.swift; sourceTree = "<group>"; };
+		6217EDD522117E0600A29361 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		6217EDD722117F6400A29361 /* IGDBRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGDBRequests.swift; sourceTree = "<group>"; };
 		62F0F9FB2210045C00284F8C /* MediaTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediaTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62F0F9FE2210045C00284F8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62F0FA002210045C00284F8C /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -44,14 +55,11 @@
 		62F0FA052210045E00284F8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		62F0FA082210045E00284F8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		62F0FA0A2210045E00284F8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		62F0FA10221006DD00284F8C /* GameSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSearchViewModel.swift; sourceTree = "<group>"; };
 		62F0FA13221007F400284F8C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		62F0FA172210084000284F8C /* IGDBClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGDBClient.swift; sourceTree = "<group>"; };
 		62F0FA192210087900284F8C /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		62F0FA1B22100F1F00284F8C /* IGDBGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGDBGame.swift; sourceTree = "<group>"; };
-		62F0FA1D22101C1300284F8C /* GameListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewController.swift; sourceTree = "<group>"; };
+		62F0FA1D22101C1300284F8C /* StoredListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredListViewController.swift; sourceTree = "<group>"; };
 		62F0FA1F22102C3600284F8C /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
-		62F0FA21221035BE00284F8C /* GameListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +78,6 @@
 			isa = PBXGroup;
 			children = (
 				6217EDC2221157D000A29361 /* Generic */,
-				6217EDC3221157D900A29361 /* Games */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -80,39 +87,24 @@
 			children = (
 				62F0FA002210045C00284F8C /* SearchViewController.swift */,
 				62F0FA1F22102C3600284F8C /* SearchViewModel.swift */,
+				6217EDD322117DEA00A29361 /* APISearchViewModel.swift */,
 			);
 			path = Generic;
-			sourceTree = "<group>";
-		};
-		6217EDC3221157D900A29361 /* Games */ = {
-			isa = PBXGroup;
-			children = (
-				62F0FA10221006DD00284F8C /* GameSearchViewModel.swift */,
-			);
-			path = Games;
 			sourceTree = "<group>";
 		};
 		6217EDC4221157DF00A29361 /* List */ = {
 			isa = PBXGroup;
 			children = (
-				6217EDC5221157E600A29361 /* Games */,
+				6217EDCA221161D900A29361 /* Generic */,
 			);
 			path = List;
-			sourceTree = "<group>";
-		};
-		6217EDC5221157E600A29361 /* Games */ = {
-			isa = PBXGroup;
-			children = (
-				62F0FA21221035BE00284F8C /* GameListViewModel.swift */,
-				62F0FA1D22101C1300284F8C /* GameListViewController.swift */,
-			);
-			path = Games;
 			sourceTree = "<group>";
 		};
 		6217EDC6221157F600A29361 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				6217EDC7221157FC00A29361 /* Games */,
+				6217EDCF2211626600A29361 /* StorageManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -121,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				62F0FA1B22100F1F00284F8C /* IGDBGame.swift */,
+				6217EDD722117F6400A29361 /* IGDBRequests.swift */,
 			);
 			path = Games;
 			sourceTree = "<group>";
@@ -128,17 +121,20 @@
 		6217EDC82211580B00A29361 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				6217EDC92211581200A29361 /* Games */,
+				6217EDD522117E0600A29361 /* APIClient.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
 		};
-		6217EDC92211581200A29361 /* Games */ = {
+		6217EDCA221161D900A29361 /* Generic */ = {
 			isa = PBXGroup;
 			children = (
-				62F0FA172210084000284F8C /* IGDBClient.swift */,
+				6217EDCB221161EE00A29361 /* ListViewModel.swift */,
+				6217EDCD2211621100A29361 /* ListViewController.swift */,
+				6217EDD1221171AE00A29361 /* StoredListViewModel.swift */,
+				62F0FA1D22101C1300284F8C /* StoredListViewController.swift */,
 			);
-			path = Games;
+			path = Generic;
 			sourceTree = "<group>";
 		};
 		62F0F9F22210045C00284F8C = {
@@ -255,15 +251,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6217EDCC221161EE00A29361 /* ListViewModel.swift in Sources */,
+				6217EDD622117E0600A29361 /* APIClient.swift in Sources */,
 				62F0FA012210045C00284F8C /* SearchViewController.swift in Sources */,
 				62F0FA1A2210087900284F8C /* Secrets.swift in Sources */,
+				6217EDD2221171AE00A29361 /* StoredListViewModel.swift in Sources */,
+				6217EDD422117DEA00A29361 /* APISearchViewModel.swift in Sources */,
+				6217EDD02211626600A29361 /* StorageManager.swift in Sources */,
+				6217EDD822117F6400A29361 /* IGDBRequests.swift in Sources */,
 				62F0FA2022102C3600284F8C /* SearchViewModel.swift in Sources */,
 				62F0FA1C22100F1F00284F8C /* IGDBGame.swift in Sources */,
+				6217EDCE2211621100A29361 /* ListViewController.swift in Sources */,
 				62F0F9FF2210045C00284F8C /* AppDelegate.swift in Sources */,
-				62F0FA22221035BE00284F8C /* GameListViewModel.swift in Sources */,
-				62F0FA182210084000284F8C /* IGDBClient.swift in Sources */,
-				62F0FA1E22101C1300284F8C /* GameListViewController.swift in Sources */,
-				62F0FA11221006DD00284F8C /* GameSearchViewModel.swift in Sources */,
+				62F0FA1E22101C1300284F8C /* StoredListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

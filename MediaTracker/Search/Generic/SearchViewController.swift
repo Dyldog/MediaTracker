@@ -11,6 +11,7 @@ import UIKit
 struct SimpleCellViewModel {
 	var text: String
 	var detailText: String
+	var identifier: String
 }
 
 class SimpleTableViewController: UITableViewController {

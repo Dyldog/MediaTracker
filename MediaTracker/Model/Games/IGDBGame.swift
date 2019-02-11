@@ -23,6 +23,7 @@ import Foundation
 import Alamofire
 
 struct IGDBGame: Codable {
+	
 	let id: Int
 	let name: String
 	let summary: String
@@ -214,5 +215,15 @@ extension DataRequest {
 	@discardableResult
 	func responseIGDBGame(queue: DispatchQueue? = nil, completionHandler: @escaping (DataResponse<IGDBGame>) -> Void) -> Self {
 		return responseDecodable(queue: queue, completionHandler: completionHandler)
+	}
+}
+
+extension IGDBGame: Identifiable {
+	var identifier: String { return "\(id)"}
+}
+
+extension IGDBGame: SimpleCellViewModelMappable {
+	var asSimpleCellViewModel: SimpleCellViewModel {
+		return SimpleCellViewModel(text: name, detailText: name, identifier: identifier)
 	}
 }
