@@ -16,9 +16,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
-		guard let navigationController = window?.rootViewController as? UINavigationController else { return false }
+		let gamesListViewController = GameListViewController()
 		
-		navigationController.viewControllers = [GameListViewController()]
+		let gamesNaviagationController = UINavigationController(rootViewController: gamesListViewController)
+		
+		let tabBarController = UITabBarController(nibName: nil, bundle: nil)
+		tabBarController.viewControllers = [gamesNaviagationController]
+		
+		
+		let window = UIWindow(frame: UIScreen.main.bounds)
+		window.rootViewController = tabBarController
+		window.makeKeyAndVisible()
+		
+		self.window = window
+		
 		return true
 	}
 

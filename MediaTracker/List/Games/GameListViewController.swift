@@ -51,6 +51,8 @@ class GameListViewController: SimpleTableViewController {
 		
 		navigationItem.searchController = searchController
 		definesPresentationContext = true
+		
+		self.title = "Games"
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
