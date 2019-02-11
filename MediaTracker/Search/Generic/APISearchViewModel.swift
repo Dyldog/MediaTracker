@@ -8,15 +8,18 @@
 
 import Foundation
 
-class APISearchViewModel<T>: SearchViewModel where T: Identifiable, T: SimpleCellViewModelMappable {
+class APISearchViewModel<ResultModel>: SearchViewModel where ResultModel: Identifiable, ResultModel: SimpleCellViewModelMappable {
 	
-	var searchResults: [T] = []
+	var searchResults: [ResultModel] = []
+	
+	var cellViewModelMapping: (ResultModel) -> SimpleCellViewModel
 	var cellViewModels: [SearchCellViewModel] = []
 	var searchRequestFactory: ((String) -> URLRequest)
 	
 	let apiClient = APIClient()
 	
-	init(searchRequestFactory: @escaping ((String) -> URLRequest)) {
+	init(cellViewModelMapping: @escaping (ResultModel) -> SimpleCellViewModel, searchRequestFactory: @escaping ((String) -> URLRequest)) {
+		self.cellViewModelMapping = cellViewModelMapping
 		self.searchRequestFactory = searchRequestFactory
 	}
 	
@@ -24,8 +27,8 @@ class APISearchViewModel<T>: SearchViewModel where T: Identifiable, T: SimpleCel
 		apiClient.makeRequest(searchRequestFactory(searchText)) { result in
 			switch result {
 			case .success(let data):
-				self.searchResults = (try? JSONDecoder().decode([T].self, from: data)) ?? []
-				self.cellViewModels = self.searchResults.map { $0.asSimpleCellViewModel }
+				self.searchResults = (try? JSONDecoder().decode([ResultModel].self, from: data)) ?? []
+				self.cellViewModels = self.searchResults.map(self.cellViewModelMapping)
 				
 			default: break
 			}

@@ -17,11 +17,8 @@ class StoredListViewController<Model>: ListViewController<StoredListViewModel<Mo
 	init(namespace: String, searchRequestFactory: @escaping ((String) -> URLRequest)) {
 		super.init()
 		
-		searchViewModel = APISearchViewModel(searchRequestFactory: searchRequestFactory)
-		
-		viewModel = StoredListViewModel(namespace: namespace, mapping: { (model: Model) in
-			return model.asSimpleCellViewModel
-		})
+		searchViewModel = APISearchViewModel(cellViewModelMapping: { $0.asSimpleCellViewModel }, searchRequestFactory: searchRequestFactory)
+		viewModel = StoredListViewModel(namespace: namespace) { $0.asSimpleCellViewModel }
 	}
 	
 	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
