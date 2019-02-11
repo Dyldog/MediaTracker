@@ -9,23 +9,10 @@
 import Foundation
 import Alamofire
 
-protocol SearchViewModel {
-	associatedtype ResultType: SearchDisplayable
+class GameSearchViewModel: SearchViewModel {	
+	var searchResults: [IGDBGame] = []
+	var cellViewModels: [SearchCellViewModel] = []
 	
-	var searchResults: [ResultType] { get }
-	
-	func updateSearchResults(for searchText: String, completion: @escaping () -> Void)
-}
-
-struct GameSearchCellViewModel: SearchDisplayable {
-	var text: String
-	var detailText: String
-}
-
-class GameSearchViewModel: SearchViewModel {
-	typealias ResultType = GameSearchCellViewModel
-	
-	var searchResults: [GameSearchCellViewModel] = []
 	private var client = IGDBClient()
 	
 	private var dateFormatter: DateFormatter {
@@ -37,15 +24,15 @@ class GameSearchViewModel: SearchViewModel {
 	func updateSearchResults(for searchText: String, completion: @escaping () -> Void) {
 		client.search(query: searchText) { result in
 			if case .success(let games) = result {
-				self.searchResults = games.map(self.map)
+				self.searchResults = games
+				self.cellViewModels = games.map(self.map)
 				completion()
 			}
 		}
 	}
 	
-	private func map(game: IGDBGame) -> GameSearchCellViewModel {
-		
-		return GameSearchCellViewModel(
+	private func map(game: IGDBGame) -> SearchCellViewModel {
+		return SearchCellViewModel(
 			text: game.name,
 			detailText: "Released \(dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(game.firstReleaseDate))))"
 		)

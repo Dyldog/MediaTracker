@@ -19,6 +19,8 @@
 		62F0FA1A2210087900284F8C /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F0FA192210087900284F8C /* Secrets.swift */; };
 		62F0FA1C22100F1F00284F8C /* IGDBGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F0FA1B22100F1F00284F8C /* IGDBGame.swift */; };
 		62F0FA1E22101C1300284F8C /* GameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F0FA1D22101C1300284F8C /* GameListViewController.swift */; };
+		62F0FA2022102C3600284F8C /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F0FA1F22102C3600284F8C /* SearchViewModel.swift */; };
+		62F0FA22221035BE00284F8C /* GameListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F0FA21221035BE00284F8C /* GameListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -48,6 +50,8 @@
 		62F0FA192210087900284F8C /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		62F0FA1B22100F1F00284F8C /* IGDBGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGDBGame.swift; sourceTree = "<group>"; };
 		62F0FA1D22101C1300284F8C /* GameListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewController.swift; sourceTree = "<group>"; };
+		62F0FA1F22102C3600284F8C /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		62F0FA21221035BE00284F8C /* GameListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,81 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6217EDC1221157C800A29361 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				6217EDC2221157D000A29361 /* Generic */,
+				6217EDC3221157D900A29361 /* Games */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		6217EDC2221157D000A29361 /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				62F0FA002210045C00284F8C /* SearchViewController.swift */,
+				62F0FA1F22102C3600284F8C /* SearchViewModel.swift */,
+			);
+			path = Generic;
+			sourceTree = "<group>";
+		};
+		6217EDC3221157D900A29361 /* Games */ = {
+			isa = PBXGroup;
+			children = (
+				62F0FA10221006DD00284F8C /* GameSearchViewModel.swift */,
+			);
+			path = Games;
+			sourceTree = "<group>";
+		};
+		6217EDC4221157DF00A29361 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				6217EDC5221157E600A29361 /* Games */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		6217EDC5221157E600A29361 /* Games */ = {
+			isa = PBXGroup;
+			children = (
+				62F0FA21221035BE00284F8C /* GameListViewModel.swift */,
+				62F0FA1D22101C1300284F8C /* GameListViewController.swift */,
+			);
+			path = Games;
+			sourceTree = "<group>";
+		};
+		6217EDC6221157F600A29361 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6217EDC7221157FC00A29361 /* Games */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6217EDC7221157FC00A29361 /* Games */ = {
+			isa = PBXGroup;
+			children = (
+				62F0FA1B22100F1F00284F8C /* IGDBGame.swift */,
+			);
+			path = Games;
+			sourceTree = "<group>";
+		};
+		6217EDC82211580B00A29361 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				6217EDC92211581200A29361 /* Games */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		6217EDC92211581200A29361 /* Games */ = {
+			isa = PBXGroup;
+			children = (
+				62F0FA172210084000284F8C /* IGDBClient.swift */,
+			);
+			path = Games;
+			sourceTree = "<group>";
+		};
 		62F0F9F22210045C00284F8C = {
 			isa = PBXGroup;
 			children = (
@@ -83,11 +162,10 @@
 			isa = PBXGroup;
 			children = (
 				62F0F9FE2210045C00284F8C /* AppDelegate.swift */,
-				62F0FA1D22101C1300284F8C /* GameListViewController.swift */,
-				62F0FA002210045C00284F8C /* SearchViewController.swift */,
-				62F0FA10221006DD00284F8C /* GameSearchViewModel.swift */,
-				62F0FA1B22100F1F00284F8C /* IGDBGame.swift */,
-				62F0FA172210084000284F8C /* IGDBClient.swift */,
+				6217EDC4221157DF00A29361 /* List */,
+				6217EDC1221157C800A29361 /* Search */,
+				6217EDC82211580B00A29361 /* Network */,
+				6217EDC6221157F600A29361 /* Model */,
 				62F0FA192210087900284F8C /* Secrets.swift */,
 				62F0FA022210045C00284F8C /* Main.storyboard */,
 				62F0FA052210045E00284F8C /* Assets.xcassets */,
@@ -179,8 +257,10 @@
 			files = (
 				62F0FA012210045C00284F8C /* SearchViewController.swift in Sources */,
 				62F0FA1A2210087900284F8C /* Secrets.swift in Sources */,
+				62F0FA2022102C3600284F8C /* SearchViewModel.swift in Sources */,
 				62F0FA1C22100F1F00284F8C /* IGDBGame.swift in Sources */,
 				62F0F9FF2210045C00284F8C /* AppDelegate.swift in Sources */,
+				62F0FA22221035BE00284F8C /* GameListViewModel.swift in Sources */,
 				62F0FA182210084000284F8C /* IGDBClient.swift in Sources */,
 				62F0FA1E22101C1300284F8C /* GameListViewController.swift in Sources */,
 				62F0FA11221006DD00284F8C /* GameSearchViewModel.swift in Sources */,
@@ -336,6 +416,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = MediaTracker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -358,6 +439,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = MediaTracker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

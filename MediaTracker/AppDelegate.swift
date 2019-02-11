@@ -18,8 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// Override point for customization after application launch.
 		guard let navigationController = window?.rootViewController as? UINavigationController else { return false }
 		
-		let searchViewController = SearchViewController(viewModel: GameSearchViewModel())
-		navigationController.viewControllers = [searchViewController]
+		navigationController.viewControllers = [GameListViewController()]
 		return true
 	}
 
