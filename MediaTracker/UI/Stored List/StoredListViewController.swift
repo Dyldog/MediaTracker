@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol SimpleCellViewModelMappable {
-	var asSimpleCellViewModel: SimpleCellViewModel { get }
-}
-
 class StoredListViewController<Model>: ListViewController<StoredListViewModel<Model>, APISearchViewModel<Model>> where Model: Identifiable, Model: SimpleCellViewModelMappable {
 	
 	init(namespace: String, searchRequestFactory: @escaping ((String) -> URLRequest)) {

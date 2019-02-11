@@ -18,17 +18,3 @@ protocol SearchViewModel {
 }
 
 typealias SearchCellViewModel = SimpleCellViewModel
-//
-//class GenericSearchViewModel<T>: SearchViewModel {
-//	var searchResults: [T]
-//	
-//	func updateSearchResults(for searchText: String, completion: @escaping () -> Void) {
-//		<#code#>
-//	}
-//	
-//	var cellViewModels: [SearchCellViewModel]
-//	
-//	typealias ResultType = T
-//	
-//
-//}

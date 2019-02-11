@@ -11,7 +11,7 @@ import UIKit
 class ListViewController<VM: ListViewModel, SVM: SearchViewModel>: SimpleTableViewController where VM.ItemType == SVM.ResultType {
 	
 	lazy var searchController: UISearchController = {
-		let resultsController = SearchResultsController(viewModel: searchViewModel)
+		let resultsController = SearchResultsViewController(viewModel: searchViewModel)
 		resultsController.onSelect = userDidSelectResult
 		
 		let searchController = UISearchController(searchResultsController: resultsController)
