@@ -15,23 +15,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		
-		let gamesListViewController = StoredListViewController<IGDBGame>(namespace: "USER_LIST", searchRequestFactory: IGDBRequests.search)
+		let userListNamespaceKey = "USER_LIST"
+		
+		let gamesListViewController = StoredListViewController<IGDBGame>(namespace: userListNamespaceKey, searchRequestFactory: IGDBRequests.search)
 		gamesListViewController.title = "Games"
 		
 		let booksSearchViewModel = MappingAPISearchViewModel<GRGoodreadsResponse, GRBook>(searchResultMapping: { (wrapper: GRGoodreadsResponse) in
 			wrapper.search.results?.work.compactMap { $0 } ?? []
-		}, cellViewModelMapping: {
-			$0.asSimpleCellViewModel
 		}, searchRequestFactory: GRRequests.search)
 		
 		let booksListViewController = StoredListViewController<GRBook>(
 			searchViewModel: booksSearchViewModel,
-			namespace: "USER_LIST", searchRequestFactory: GRRequests.search)
+			namespace: userListNamespaceKey)
 		booksListViewController.title = "Books"
+		
+		func tmdbListViewController<T>(_ title: String, _ searchRequest: (@escaping (String) -> URLRequest)) -> StoredListViewController<T> {
+			let tmdbSearchViewModel = MappingAPISearchViewModel<TMDBSearchResponse, T>(searchResultMapping: { $0.results }, searchRequestFactory: searchRequest)
+			let tmdbListViewController = StoredListViewController<T>(searchViewModel: tmdbSearchViewModel, namespace: "\(userListNamespaceKey)_\(title)")
+			tmdbListViewController.title = title
+			return tmdbListViewController
+		}
+		
+		let moviesListViewController: StoredListViewController<TMDBMovie> = tmdbListViewController("Movies", TMDBRequests.searchMovies)
+		let tvShowListViewController: StoredListViewController<TMDBTVShow> = tmdbListViewController("TV", TMDBRequests.searchTV)
 		
 		self.window = UIWindow(rootViewController: [
 			gamesListViewController.inNavigationController,
-			booksListViewController.inNavigationController
+			booksListViewController.inNavigationController,
+			moviesListViewController.inNavigationController,
+			tvShowListViewController.inNavigationController
 		].inTabBarController)
 		
 		return true

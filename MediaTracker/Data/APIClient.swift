@@ -50,15 +50,19 @@ class APIClient {
 				let contentTypeString = headers["Content-Type"] as! String
 				let contentType = contentTypeString.components(separatedBy: ";")[0]
 				
-				switch contentType {
-				case "application/json": completion(.success(self.decodeJSON(from: data)))
-				case "application/xml":
-					let decodingResult: Result<T> = self.decodeXML(from: data)
-					switch decodingResult {
-					case .success(let decodedObj): completion(.success(decodedObj))
-					case .failure(let error): completion(.failure(error))
+				let decodingResult: Result<T> = {
+					switch contentType {
+					case "application/json": return self.decodeJSON(from: data)
+					case "application/xml": return self.decodeXML(from: data)
+					default: return .failure(APIClientError.unknownResponseContentType)
 					}
-				default: completion(.failure(APIClientError.unknownResponseContentType))
+				}()
+				
+				switch decodingResult {
+				case .success(let decodedObj):
+					completion(.success(decodedObj))
+				case .failure(let error):
+					completion(.failure(error))
 				}
 			case .failure(let error):
 				completion(.failure(error))
@@ -66,8 +70,20 @@ class APIClient {
 		}
 	}
 	
-	private func decodeJSON<T: Codable>(from data: Data) -> T {
-		return (try! JSONDecoder().decode(T.self, from: data))
+	private func handleDecodeError(error: Error, for data: Data) {
+		print("API CLIENT ERROR: Could not decode object")
+		print("Description: \(error.localizedDescription)")
+		print("Response: \(String(data: data, encoding: .utf8) ?? "COULDNT DECODE STRING")")
+	}
+	
+	private func decodeJSON<T: Codable>(from data: Data) -> Result<T> {
+		do {
+			let obj = try JSONDecoder().decode(T.self, from: data)
+			return .success(obj)
+		} catch {
+			handleDecodeError(error: error, for: data)
+			return .failure(APIClientError.decodingFailed(decodingError: error))
+		}
 	}
 	
 	private func decodeXML<T: Codable>(from data: Data) -> Result<T> {
@@ -77,7 +93,7 @@ class APIClient {
 			let obj = try XMLDecoder().decode(T.self, from: fixedXMLString.data(using: .utf8)!)
 			return .success(obj)
 		} catch {
-			print(error.localizedDescription)
+			handleDecodeError(error: error, for: data)
 			return .failure(APIClientError.decodingFailed(decodingError: error))
 		}
 	}

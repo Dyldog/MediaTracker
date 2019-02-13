@@ -10,10 +10,18 @@ import UIKit
 
 class StoredListViewController<Model>: ListViewController<StoredListViewModel<Model>, APISearchViewModel<Model>> where Model: Identifiable, Model: SimpleCellViewModelMappable {
 	
-	init(viewModel: StoredListViewModel<Model>? = nil, searchViewModel: APISearchViewModel<Model>? = nil, namespace: String, searchRequestFactory: @escaping ((String) -> URLRequest)) {
+	init(viewModel: StoredListViewModel<Model>? = nil, searchViewModel: APISearchViewModel<Model>, namespace: String) {
 		super.init()
 		
-		self.searchViewModel = searchViewModel ?? APISearchViewModel(cellViewModelMapping: { $0.asSimpleCellViewModel }, searchRequestFactory: searchRequestFactory)
+		self.searchViewModel = searchViewModel
+		
+		self.viewModel = viewModel ?? StoredListViewModel(namespace: namespace) { $0.asSimpleCellViewModel }
+	}
+	
+	init(viewModel: StoredListViewModel<Model>? = nil, namespace: String, searchRequestFactory: @escaping ((String) -> URLRequest)) {
+		super.init()
+		
+		self.searchViewModel = APISearchViewModel(cellViewModelMapping: { $0.asSimpleCellViewModel }, searchRequestFactory: searchRequestFactory)
 		
 		self.viewModel = viewModel ?? StoredListViewModel(namespace: namespace) { $0.asSimpleCellViewModel }
 	}

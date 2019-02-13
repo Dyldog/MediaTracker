@@ -19,9 +19,9 @@ class APISearchViewModel<ResultModel>: SearchViewModel where ResultModel: Identi
 	
 	let apiClient: APIClient
 	
-	init(apiClient: APIClient = APIClient(), cellViewModelMapping: @escaping (ResultModel) -> SimpleCellViewModel, searchRequestFactory: @escaping ((String) -> URLRequest)) {
+	init(apiClient: APIClient = APIClient(), cellViewModelMapping: ((ResultModel) -> SimpleCellViewModel)? = nil, searchRequestFactory: @escaping ((String) -> URLRequest)) {
 		self.apiClient = apiClient
-		self.cellViewModelMapping = cellViewModelMapping
+		self.cellViewModelMapping = cellViewModelMapping ?? { $0.asSimpleCellViewModel }
 		self.searchRequestFactory = searchRequestFactory
 	}
 	
@@ -43,7 +43,7 @@ class APISearchViewModel<ResultModel>: SearchViewModel where ResultModel: Identi
 class MappingAPISearchViewModel<WrapperModel, ResultModel>: APISearchViewModel<ResultModel> where ResultModel: Identifiable, ResultModel: SimpleCellViewModelMappable, WrapperModel: Codable  {
 	var mapping: (WrapperModel) -> [ResultModel]
 	
-	init(searchResultMapping: @escaping (WrapperModel) -> [ResultModel], cellViewModelMapping: @escaping (ResultModel) -> SimpleCellViewModel, searchRequestFactory: @escaping ((String) -> URLRequest)) {
+	init(searchResultMapping: @escaping (WrapperModel) -> [ResultModel], cellViewModelMapping: ((ResultModel) -> SimpleCellViewModel)? = nil, searchRequestFactory: @escaping ((String) -> URLRequest)) {
 		self.mapping = searchResultMapping
 		super.init(cellViewModelMapping: cellViewModelMapping, searchRequestFactory: searchRequestFactory)
 	}
