@@ -12,14 +12,29 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
+	let userListNamespaceKey = "USER_LIST"
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		
-		let userListNamespaceKey = "USER_LIST"
+		self.window = UIWindow(rootViewController: [
+			gamesViewController.inNavigationController,
+			booksViewController.inNavigationController,
+			moviesListViewController.inNavigationController,
+			tvShowListViewController.inNavigationController
+		].inTabBarController)
 		
+		return true
+	}
+}
+
+extension AppDelegate {
+	var gamesViewController: StoredListViewController<IGDBGame> {
 		let gamesListViewController = StoredListViewController<IGDBGame>(namespace: userListNamespaceKey, searchRequestFactory: IGDBRequests.search)
 		gamesListViewController.title = "Games"
-		
+		return gamesListViewController
+	}
+	
+	var booksViewController: StoredListViewController<GRBook> {
 		let booksSearchViewModel = MappingAPISearchViewModel<GRGoodreadsResponse, GRBook>(searchResultMapping: { (wrapper: GRGoodreadsResponse) in
 			wrapper.search.results?.work.compactMap { $0 } ?? []
 		}, searchRequestFactory: GRRequests.search)
@@ -29,25 +44,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			namespace: userListNamespaceKey)
 		booksListViewController.title = "Books"
 		
-		func tmdbListViewController<T>(_ title: String, _ searchRequest: (@escaping (String) -> URLRequest)) -> StoredListViewController<T> {
-			let tmdbSearchViewModel = MappingAPISearchViewModel<TMDBSearchResponse, T>(searchResultMapping: { $0.results }, searchRequestFactory: searchRequest)
-			let tmdbListViewController = StoredListViewController<T>(searchViewModel: tmdbSearchViewModel, namespace: "\(userListNamespaceKey)_\(title)")
-			tmdbListViewController.title = title
-			return tmdbListViewController
-		}
-		
-		let moviesListViewController: StoredListViewController<TMDBMovie> = tmdbListViewController("Movies", TMDBRequests.searchMovies)
-		let tvShowListViewController: StoredListViewController<TMDBTVShow> = tmdbListViewController("TV", TMDBRequests.searchTV)
-		
-		self.window = UIWindow(rootViewController: [
-			gamesListViewController.inNavigationController,
-			booksListViewController.inNavigationController,
-			moviesListViewController.inNavigationController,
-			tvShowListViewController.inNavigationController
-		].inTabBarController)
-		
-		return true
+		return booksListViewController
 	}
+	
+	private func tmdbListViewController<T>(_ title: String, _ searchRequest: (@escaping (String) -> URLRequest)) -> StoredListViewController<T> {
+		let tmdbSearchViewModel = MappingAPISearchViewModel<TMDBSearchResponse, T>(searchResultMapping: { $0.results }, searchRequestFactory: searchRequest)
+		let tmdbListViewController = StoredListViewController<T>(searchViewModel: tmdbSearchViewModel, namespace: "\(userListNamespaceKey)_\(title)")
+		tmdbListViewController.title = title
+		return tmdbListViewController
+	}
+	
+	var moviesListViewController: StoredListViewController<TMDBMovie> {
+		return tmdbListViewController("Movies", TMDBRequests.searchMovies)
+	}
+	
+	var tvShowListViewController: StoredListViewController<TMDBTVShow> {
+		return tmdbListViewController("TV", TMDBRequests.searchTV)
+	}
+	
 }
 
 extension UIWindow {
