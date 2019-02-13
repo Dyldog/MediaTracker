@@ -16,7 +16,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		
 		let gamesListViewController = StoredListViewController<IGDBGame>(namespace: "USER_LIST", searchRequestFactory: IGDBRequests.search)
-		self.window = UIWindow(rootViewController: [gamesListViewController.inNavigationController].inTabBarController)
+		gamesListViewController.title = "Games"
+		
+		let booksSearchViewModel = MappingAPISearchViewModel<GRGoodreadsResponse, GRBook>(searchResultMapping: { (wrapper: GRGoodreadsResponse) in
+			wrapper.search.results?.work.compactMap { $0 } ?? []
+		}, cellViewModelMapping: {
+			$0.asSimpleCellViewModel
+		}, searchRequestFactory: GRRequests.search)
+		
+		let booksListViewController = StoredListViewController<GRBook>(
+			searchViewModel: booksSearchViewModel,
+			namespace: "USER_LIST", searchRequestFactory: GRRequests.search)
+		booksListViewController.title = "Books"
+		
+		self.window = UIWindow(rootViewController: [
+			gamesListViewController.inNavigationController,
+			booksListViewController.inNavigationController
+		].inTabBarController)
 		
 		return true
 	}

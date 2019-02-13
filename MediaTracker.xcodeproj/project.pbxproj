@@ -17,6 +17,13 @@
 		6217EDDB2211892C00A29361 /* SimpleCellModelMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6217EDDA2211892C00A29361 /* SimpleCellModelMappable.swift */; };
 		6217EDE02211895F00A29361 /* SimpleCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6217EDDF2211895F00A29361 /* SimpleCellViewModel.swift */; };
 		6217EDE22211897B00A29361 /* SimpleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6217EDE12211897B00A29361 /* SimpleTableViewController.swift */; };
+		6217EDE72211960200A29361 /* GRRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6217EDE62211960200A29361 /* GRRequests.swift */; };
+		6217EDE922119CF800A29361 /* GRBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6217EDE822119CF800A29361 /* GRBook.swift */; };
+		6217EDEB2211A1AC00A29361 /* GRSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6217EDEA2211A1AC00A29361 /* GRSearchResponse.swift */; };
+		6217EDED2211A7C800A29361 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6217EDEC2211A7C800A29361 /* APIRequest.swift */; };
+		62438E8D2212D9AC00181A82 /* XMLParsing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62438E8C2212D9AC00181A82 /* XMLParsing.framework */; };
+		62438E8E2212D9B700181A82 /* XMLParsing.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 62438E8C2212D9AC00181A82 /* XMLParsing.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		62882E7E22128A6400D9D6BF /* MappingAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62882E7D22128A6400D9D6BF /* MappingAPIClient.swift */; };
 		62F0F9FF2210045C00284F8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F0F9FE2210045C00284F8C /* AppDelegate.swift */; };
 		62F0FA012210045C00284F8C /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F0FA002210045C00284F8C /* SearchResultsViewController.swift */; };
 		62F0FA042210045C00284F8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62F0FA022210045C00284F8C /* Main.storyboard */; };
@@ -38,6 +45,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				62F0FA162210080000284F8C /* Alamofire.framework in CopyFiles */,
+				62438E8E2212D9B700181A82 /* XMLParsing.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +62,12 @@
 		6217EDDA2211892C00A29361 /* SimpleCellModelMappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCellModelMappable.swift; sourceTree = "<group>"; };
 		6217EDDF2211895F00A29361 /* SimpleCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCellViewModel.swift; sourceTree = "<group>"; };
 		6217EDE12211897B00A29361 /* SimpleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTableViewController.swift; sourceTree = "<group>"; };
+		6217EDE62211960200A29361 /* GRRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRRequests.swift; sourceTree = "<group>"; };
+		6217EDE822119CF800A29361 /* GRBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRBook.swift; sourceTree = "<group>"; };
+		6217EDEA2211A1AC00A29361 /* GRSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRSearchResponse.swift; sourceTree = "<group>"; };
+		6217EDEC2211A7C800A29361 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		62438E8C2212D9AC00181A82 /* XMLParsing.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XMLParsing.framework; path = Carthage/Build/iOS/XMLParsing.framework; sourceTree = "<group>"; };
+		62882E7D22128A6400D9D6BF /* MappingAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MappingAPIClient.swift; sourceTree = "<group>"; };
 		62F0F9FB2210045C00284F8C /* MediaTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediaTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62F0F9FE2210045C00284F8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62F0FA002210045C00284F8C /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +88,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62F0FA14221007F400284F8C /* Alamofire.framework in Frameworks */,
+				62438E8D2212D9AC00181A82 /* XMLParsing.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				62F0FA192210087900284F8C /* Secrets.swift */,
+				6217EDE5221195F200A29361 /* Books */,
 				6217EDC7221157FC00A29361 /* Games */,
 			);
 			path = Model;
@@ -121,7 +137,9 @@
 			isa = PBXGroup;
 			children = (
 				6217EDD522117E0600A29361 /* APIClient.swift */,
+				62882E7D22128A6400D9D6BF /* MappingAPIClient.swift */,
 				6217EDCF2211626600A29361 /* StorageManager.swift */,
+				6217EDEC2211A7C800A29361 /* APIRequest.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -154,6 +172,16 @@
 				6217EDC4221157DF00A29361 /* Stored List */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		6217EDE5221195F200A29361 /* Books */ = {
+			isa = PBXGroup;
+			children = (
+				6217EDE62211960200A29361 /* GRRequests.swift */,
+				6217EDE822119CF800A29361 /* GRBook.swift */,
+				6217EDEA2211A1AC00A29361 /* GRSearchResponse.swift */,
+			);
+			path = Books;
 			sourceTree = "<group>";
 		};
 		62F0F9F22210045C00284F8C = {
@@ -191,6 +219,7 @@
 		62F0FA12221007F400284F8C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				62438E8C2212D9AC00181A82 /* XMLParsing.framework */,
 				62F0FA13221007F400284F8C /* Alamofire.framework */,
 			);
 			name = Frameworks;
@@ -272,17 +301,22 @@
 				6217EDD622117E0600A29361 /* APIClient.swift in Sources */,
 				62F0FA012210045C00284F8C /* SearchResultsViewController.swift in Sources */,
 				62F0FA1A2210087900284F8C /* Secrets.swift in Sources */,
+				62882E7E22128A6400D9D6BF /* MappingAPIClient.swift in Sources */,
 				6217EDE02211895F00A29361 /* SimpleCellViewModel.swift in Sources */,
 				6217EDD2221171AE00A29361 /* StoredListViewModel.swift in Sources */,
 				6217EDD422117DEA00A29361 /* APISearchViewModel.swift in Sources */,
 				6217EDD02211626600A29361 /* StorageManager.swift in Sources */,
 				6217EDD822117F6400A29361 /* IGDBRequests.swift in Sources */,
+				6217EDE922119CF800A29361 /* GRBook.swift in Sources */,
 				62F0FA2022102C3600284F8C /* SearchViewModel.swift in Sources */,
 				6217EDDB2211892C00A29361 /* SimpleCellModelMappable.swift in Sources */,
 				6217EDE22211897B00A29361 /* SimpleTableViewController.swift in Sources */,
 				62F0FA1C22100F1F00284F8C /* IGDBGame.swift in Sources */,
+				6217EDE72211960200A29361 /* GRRequests.swift in Sources */,
 				6217EDCE2211621100A29361 /* ListViewController.swift in Sources */,
 				62F0F9FF2210045C00284F8C /* AppDelegate.swift in Sources */,
+				6217EDEB2211A1AC00A29361 /* GRSearchResponse.swift in Sources */,
+				6217EDED2211A7C800A29361 /* APIRequest.swift in Sources */,
 				62F0FA1E22101C1300284F8C /* StoredListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

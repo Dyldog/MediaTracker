@@ -17,14 +17,22 @@ class SimpleTableViewController: UITableViewController {
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "cell") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
+		cell.textLabel?.numberOfLines = 2
 		cell.detailTextLabel?.numberOfLines = 0
-		return cell
-	}
-	
-	override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+		
 		let cellModel = cellModels[indexPath.row]
 		
 		cell.textLabel?.text = cellModel.text
 		cell.detailTextLabel?.text = cellModel.detailText
+		
+		return cell
+	}
+	
+	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		return UITableView.automaticDimension
+	}
+	
+	override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+		return UITableView.automaticDimension
 	}
 }

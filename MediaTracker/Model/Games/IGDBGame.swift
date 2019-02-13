@@ -26,8 +26,8 @@ struct IGDBGame: Codable {
 	
 	let id: Int
 	let name: String
-	let summary: String
-	let firstReleaseDate: Int
+	let summary: String?
+	let firstReleaseDate: Int?
 	
 	let ageRatings: [Int]?
 	let aggregatedRating: Double?

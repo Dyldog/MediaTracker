@@ -10,11 +10,12 @@ import UIKit
 
 class StoredListViewController<Model>: ListViewController<StoredListViewModel<Model>, APISearchViewModel<Model>> where Model: Identifiable, Model: SimpleCellViewModelMappable {
 	
-	init(namespace: String, searchRequestFactory: @escaping ((String) -> URLRequest)) {
+	init(viewModel: StoredListViewModel<Model>? = nil, searchViewModel: APISearchViewModel<Model>? = nil, namespace: String, searchRequestFactory: @escaping ((String) -> URLRequest)) {
 		super.init()
 		
-		searchViewModel = APISearchViewModel(cellViewModelMapping: { $0.asSimpleCellViewModel }, searchRequestFactory: searchRequestFactory)
-		viewModel = StoredListViewModel(namespace: namespace) { $0.asSimpleCellViewModel }
+		self.searchViewModel = searchViewModel ?? APISearchViewModel(cellViewModelMapping: { $0.asSimpleCellViewModel }, searchRequestFactory: searchRequestFactory)
+		
+		self.viewModel = viewModel ?? StoredListViewModel(namespace: namespace) { $0.asSimpleCellViewModel }
 	}
 	
 	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
