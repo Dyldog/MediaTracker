@@ -38,6 +38,7 @@
 		62F0FA1C22100F1F00284F8C /* IGDBGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F0FA1B22100F1F00284F8C /* IGDBGame.swift */; };
 		62F0FA1E22101C1300284F8C /* StoredListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F0FA1D22101C1300284F8C /* StoredListViewController.swift */; };
 		62F0FA2022102C3600284F8C /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F0FA1F22102C3600284F8C /* SearchViewModel.swift */; };
+		828ACA7C6E7F12F5FABD72CF /* libPods-MediaTracker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6F68317BFCBD55D20916E6 /* libPods-MediaTracker.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -86,6 +87,9 @@
 		62F0FA1B22100F1F00284F8C /* IGDBGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGDBGame.swift; sourceTree = "<group>"; };
 		62F0FA1D22101C1300284F8C /* StoredListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredListViewController.swift; sourceTree = "<group>"; };
 		62F0FA1F22102C3600284F8C /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		8BDE32FBC98FB5DB2471A725 /* Pods-MediaTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediaTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MediaTracker/Pods-MediaTracker.debug.xcconfig"; sourceTree = "<group>"; };
+		AA6F68317BFCBD55D20916E6 /* libPods-MediaTracker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MediaTracker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7525B89277C0929D12C7ABC /* Pods-MediaTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediaTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-MediaTracker/Pods-MediaTracker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,12 +99,22 @@
 			files = (
 				62F0FA14221007F400284F8C /* Alamofire.framework in Frameworks */,
 				62438E8D2212D9AC00181A82 /* XMLParsing.framework in Frameworks */,
+				828ACA7C6E7F12F5FABD72CF /* libPods-MediaTracker.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		019B6FB2C8DCBD1E77A6AC2A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8BDE32FBC98FB5DB2471A725 /* Pods-MediaTracker.debug.xcconfig */,
+				F7525B89277C0929D12C7ABC /* Pods-MediaTracker.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		6217EDC2221157D000A29361 /* Search Results List */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +221,7 @@
 				62F0F9FD2210045C00284F8C /* MediaTracker */,
 				62F0F9FC2210045C00284F8C /* Products */,
 				62F0FA12221007F400284F8C /* Frameworks */,
+				019B6FB2C8DCBD1E77A6AC2A /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -238,6 +253,7 @@
 			children = (
 				62438E8C2212D9AC00181A82 /* XMLParsing.framework */,
 				62F0FA13221007F400284F8C /* Alamofire.framework */,
+				AA6F68317BFCBD55D20916E6 /* libPods-MediaTracker.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -249,10 +265,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 62F0FA0D2210045E00284F8C /* Build configuration list for PBXNativeTarget "MediaTracker" */;
 			buildPhases = (
+				CB14458219BF82390073F876 /* [CP] Check Pods Manifest.lock */,
 				62F0FA15221007F800284F8C /* CopyFiles */,
 				62F0F9F72210045C00284F8C /* Sources */,
 				62F0F9F82210045C00284F8C /* Frameworks */,
 				62F0F9F92210045C00284F8C /* Resources */,
+				8EF47BEA16931520B3D2BA4A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -308,6 +326,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8EF47BEA16931520B3D2BA4A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MediaTracker/Pods-MediaTracker-resources.sh",
+				"${PODS_ROOT}/Iconic/Source/Catalog/FontAwesome.otf",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome.otf",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MediaTracker/Pods-MediaTracker-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CB14458219BF82390073F876 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MediaTracker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		62F0F9F72210045C00284F8C /* Sources */ = {
@@ -481,6 +546,7 @@
 		};
 		62F0FA0E2210045E00284F8C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BDE32FBC98FB5DB2471A725 /* Pods-MediaTracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -504,6 +570,7 @@
 		};
 		62F0FA0F2210045E00284F8C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F7525B89277C0929D12C7ABC /* Pods-MediaTracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

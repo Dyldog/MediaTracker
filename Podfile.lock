@@ -1,0 +1,22 @@
+PODS:
+  - Iconic (1.3)
+
+DEPENDENCIES:
+  - Iconic (from `https://github.com/zvving/Iconic.git`, branch `swift4`)
+
+EXTERNAL SOURCES:
+  Iconic:
+    :branch: swift4
+    :git: https://github.com/zvving/Iconic.git
+
+CHECKOUT OPTIONS:
+  Iconic:
+    :commit: c104b30e89146e71655c6e9c3091764694d82ce6
+    :git: https://github.com/zvving/Iconic.git
+
+SPEC CHECKSUMS:
+  Iconic: 9262d3aaa52864043dfea3470e7afcb671fbd220
+
+PODFILE CHECKSUM: 9e42970a5bd96dc7aa7a2f1c3eecb41b58bfb4ad
+
+COCOAPODS: 1.5.3
