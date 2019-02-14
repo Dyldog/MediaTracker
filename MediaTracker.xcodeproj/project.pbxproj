@@ -271,6 +271,7 @@
 				62F0F9F82210045C00284F8C /* Frameworks */,
 				62F0F9F92210045C00284F8C /* Resources */,
 				8EF47BEA16931520B3D2BA4A /* [CP] Copy Pods Resources */,
+				62FBFAEB2214FCC90018388F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -328,6 +329,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		62FBFAEB2214FCC90018388F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/XMLParsing.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
 		8EF47BEA16931520B3D2BA4A /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -549,6 +569,7 @@
 			baseConfigurationReference = 8BDE32FBC98FB5DB2471A725 /* Pods-MediaTracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6CW3378X23;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -563,6 +584,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dylanelliott.MediaTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -573,6 +595,7 @@
 			baseConfigurationReference = F7525B89277C0929D12C7ABC /* Pods-MediaTracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6CW3378X23;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -587,6 +610,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dylanelliott.MediaTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
