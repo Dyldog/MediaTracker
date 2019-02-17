@@ -45,7 +45,7 @@ extension AppDelegate {
 	var booksViewController: StoredAPIListViewController<LocallyStoredListViewModel<GRBook>> {
 		let booksSearchViewModel = MappingAPISearchViewModel<GRGoodreadsResponse, GRBook>(resultMapping: { (wrapper: GRGoodreadsResponse) in
 			wrapper.search.results?.work.compactMap { $0 } ?? []
-		}, searchRequestFactory: GRRequests.search)
+		}, requestFactory: GRRequests.search)
 		
 		let booksListViewController = StoredAPIListViewController<LocallyStoredListViewModel<GRBook>>(
 			viewModel: locallyStoredListViewModel(),
@@ -57,27 +57,36 @@ extension AppDelegate {
 		return booksListViewController
 	}
 	
-	private func tmdbListViewController<Model> (_ title: String, _ icon: FontAwesomeIcon, _ searchRequest: (@escaping (String) -> URLRequest)) -> StoredAPIListViewController<LocallyStoredListViewModel<Model>> where Model: Identifiable, Model: SimpleCellViewModelMappable {
-		let tmdbListViewModel: LocallyStoredListViewModel<Model> = locallyStoredListViewModel()
-		let tmdbSearchViewModel: MappingAPISearchViewModel<TMDBSearchResponse, Model> = MappingAPISearchViewModel<TMDBSearchResponse, Model>(resultMapping: { $0.results }, searchRequestFactory: searchRequest)
+	private func traktListViewController<Model> (_ title: String, _ icon: FontAwesomeIcon, _ searchRequest: (@escaping () -> URLRequest)) -> RefreshableListViewController<Model> where Model: Identifiable, Model: SimpleCellViewModelMappable {
+//		let tmdbListViewModel: LocallyStoredListViewModel<Model> = locallyStoredListViewModel()
+//		let tmdbSearchViewModel: MappingAPISearchViewModel<TMDBSearchResponse, Model> = MappingAPISearchViewModel<TMDBSearchResponse, Model>(resultMapping: { $0.results }, searchRequestFactory: searchRequest)
 		
-		let tmdbListViewController: StoredAPIListViewController<LocallyStoredListViewModel<Model>> = StoredAPIListViewController<LocallyStoredListViewModel<Model>>(
-			viewModel: tmdbListViewModel,
-			searchViewModel: tmdbSearchViewModel,
-			namespace: "\(userListNamespaceKey)_\(title)"
-		)
+//		let tmdbListViewController: StoredAPIListViewController<LocallyStoredListViewModel<Model>> = StoredAPIListViewController<LocallyStoredListViewModel<Model>>(
+//			viewModel: tmdbListViewModel,
+//			searchViewModel: tmdbSearchViewModel,
+//			namespace: "\(userListNamespaceKey)_\(title)"
+//		)
 		
-		tmdbListViewController.title = title
-		tmdbListViewController.tabBarItem.image = Iconic.image(withIcon: icon, size: CGSize(width: 40, height: 30), color: .black)
-		return tmdbListViewController
+		let traktListViewModel = MappingNetworkListViewModel<Void, TraktResponse, Model>(
+			resultMapping: { (response: TraktResponse) in
+				response.map { (element: TraktResponseElement) in
+					element.value()
+				}
+		}, requestFactory: searchRequest)
+		
+		let traktListViewController = RefreshableListViewController<Model>(viewModel: traktListViewModel)
+		traktListViewController.title = title
+		traktListViewController.tabBarItem.image = Iconic.image(withIcon: icon, size: CGSize(width: 40, height: 30), color: .black)
+		
+		return traktListViewController
 	}
 	
-	var moviesListViewController: StoredAPIListViewController<LocallyStoredListViewModel<TMDBMovie>>  {
-		return tmdbListViewController("Movies", .filmIcon, TMDBRequests.searchMovies)
+	var moviesListViewController: RefreshableListViewController<TraktMovie>  {
+		return traktListViewController("Movies", .filmIcon, { TraktRequests.list(ofType: .movies) })
 	}
 	
-	var tvShowListViewController: StoredAPIListViewController<LocallyStoredListViewModel<TMDBTVShow>> {
-		return tmdbListViewController("TV", .desktopIcon, TMDBRequests.searchTV)
+	var tvShowListViewController: RefreshableListViewController<TraktShow> {
+		return traktListViewController("TV", .desktopIcon, { TraktRequests.list(ofType: .tv) })
 	}
 	
 //	var articleListViewController: RefreshableListViewController<NetworkStoredListViewModel<IPArticle>> {
@@ -91,7 +100,7 @@ extension AppDelegate {
 		let swapiList = RefreshableListViewController<SWAPIPerson>(
 			viewModel: MappingNetworkListViewModel<Void, SWAPIResponse, SWAPIPerson>(
 				resultMapping: { $0.results },
-				searchRequestFactory: SWAPIRequests.people))
+				requestFactory: SWAPIRequests.people))
 		swapiList.title = "Star Wars"
 		swapiList.tabBarItem.image = Iconic.image(withIcon: .starIcon, size: CGSize(width: 40, height: 30), color: .black)
 		return swapiList

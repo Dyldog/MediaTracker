@@ -17,11 +17,11 @@ where Wrapper: Codable, Model: Identifiable, Model: SimpleCellViewModelMappable 
 	
 	init(resultMapping: @escaping (Wrapper) -> [Model],
 		cellViewModelMapping: @escaping ((Model) -> SimpleCellViewModel) = { $0.asSimpleCellViewModel },
-		searchRequestFactory: @escaping ((Input) -> URLRequest)) {
+		requestFactory: @escaping ((Input) -> URLRequest)) {
 		
 		self.mapping = resultMapping
 		super.init(cellViewModelMapping: cellViewModelMapping,
-				   requestFactory: searchRequestFactory)
+				   requestFactory: requestFactory)
 	}
 	
 	override func updateResults(for input: Input, completion: @escaping () -> Void) {
@@ -30,7 +30,8 @@ where Wrapper: Codable, Model: Identifiable, Model: SimpleCellViewModelMappable 
 			case .success(let wrapper):
 				self.results = self.mapping(wrapper)
 				self.cellViewModels = self.results.map(self.cellViewModelMapping)
-			default: break
+			case .failure(let error):
+				self.handleError(error: error)
 			}
 			
 			completion()
