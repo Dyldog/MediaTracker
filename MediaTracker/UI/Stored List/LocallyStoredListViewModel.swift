@@ -1,14 +1,14 @@
 //
-//  StoredListViewModel.swift
+//  LocallyStoredListViewModel.swift
 //  MediaTracker
 //
-//  Created by Dylan Elliott on 11/2/19.
+//  Created by Dylan Elliott on 17/2/19.
 //  Copyright © 2019 Dylan Elliott. All rights reserved.
 //
 
 import Foundation
 
-class StoredListViewModel<Model: Identifiable>: ListViewModel {
+class LocallyStoredListViewModel<Model: Identifiable>: MutableListViewModel {
 	
 	typealias ItemType = Model
 	var mapping: (Model) -> SimpleCellViewModel
@@ -31,5 +31,9 @@ class StoredListViewModel<Model: Identifiable>: ListViewModel {
 		let item: Model = storageManager.loadList()[index]
 		storageManager.delete(item)
 		cellViewModels.remove(at: index)
+	}
+	
+	func removeItem(_ item: Model) {
+		storageManager.delete(item)
 	}
 }

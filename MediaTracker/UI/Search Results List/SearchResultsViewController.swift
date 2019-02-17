@@ -18,8 +18,6 @@ class SearchResultsViewController<T: SearchViewModel>: SimpleTableViewController
 	init(viewModel: T) {
 		self.viewModel = viewModel
 		super.init(style: .plain)
-		tableView.estimatedRowHeight = UITableView.automaticDimension
-		tableView.rowHeight = UITableView.automaticDimension
 	}
 	
 	required init?(coder aDecoder: NSCoder) {

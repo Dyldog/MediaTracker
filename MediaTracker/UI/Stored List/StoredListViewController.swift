@@ -8,22 +8,19 @@
 
 import UIKit
 
-class StoredListViewController<Model>: ListViewController<StoredListViewModel<Model>, APISearchViewModel<Model>> where Model: Identifiable, Model: SimpleCellViewModelMappable {
+class StoredAPIListViewController<StoredListVM>: MutableListViewController<StoredListVM, NetworkListViewModel<String, StoredListVM.ItemType>> where StoredListVM: MutableListViewModel, StoredListVM.ItemType: Identifiable, StoredListVM.ItemType: SimpleCellViewModelMappable {
 	
-	init(viewModel: StoredListViewModel<Model>? = nil, searchViewModel: APISearchViewModel<Model>, namespace: String) {
-		super.init()
-		
-		self.searchViewModel = searchViewModel
-		
-		self.viewModel = viewModel ?? StoredListViewModel(namespace: namespace) { $0.asSimpleCellViewModel }
+	init(viewModel: StoredListVM, searchViewModel: NetworkListViewModel<String, StoredListVM.ItemType>, namespace: String) {
+		super.init(viewModel: viewModel, searchViewModel: searchViewModel)
+			// ?? StoredListViewModel(namespace: namespace) { $0.asSimpleCellViewModel }
 	}
 	
-	init(viewModel: StoredListViewModel<Model>? = nil, namespace: String, searchRequestFactory: @escaping ((String) -> URLRequest)) {
-		super.init()
-		
-		self.searchViewModel = APISearchViewModel(cellViewModelMapping: { $0.asSimpleCellViewModel }, searchRequestFactory: searchRequestFactory)
-		
-		self.viewModel = viewModel ?? StoredListViewModel(namespace: namespace) { $0.asSimpleCellViewModel }
+	init(viewModel: StoredListVM, namespace: String, searchRequestFactory: @escaping ((String) -> URLRequest)) {
+		super.init(
+			viewModel: viewModel,
+			searchViewModel: APISearchViewModel(cellViewModelMapping: { $0.asSimpleCellViewModel }, requestFactory: searchRequestFactory)
+		)
+			// ?? StoredListViewModel(namespace: namespace) { $0.asSimpleCellViewModel }
 	}
 	
 	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

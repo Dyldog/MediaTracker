@@ -1,14 +1,15 @@
 //
-//  ListViewController.swift
+//  MutableListViewController.swift
 //  MediaTracker
 //
-//  Created by Dylan Elliott on 11/2/19.
+//  Created by Dylan Elliott on 17/2/19.
 //  Copyright © 2019 Dylan Elliott. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
-class ListViewController<VM: ListViewModel, SVM: SearchViewModel>: SimpleTableViewController where VM.ItemType == SVM.ResultType {
+class MutableListViewController<VM: MutableListViewModel, SVM: SearchViewModel>: ListViewController<VM> where VM.ItemType == SVM.ResultType {
 	
 	lazy var searchController: UISearchController = {
 		let resultsController = SearchResultsViewController(viewModel: searchViewModel)
@@ -20,21 +21,10 @@ class ListViewController<VM: ListViewModel, SVM: SearchViewModel>: SimpleTableVi
 		return searchController
 	}()
 	
-	var viewModel: VM!
 	var searchViewModel: SVM!
 	
-	override var cellModels: [SimpleCellViewModel] {
-		get { return viewModel.cellViewModels }
-		set { }
-		
-	}
-	
-	init() {
-		super.init(style: .plain)
-	}
-	
-	convenience init(viewModel: VM, searchViewModel: SVM) {
-		self.init()
+	init(viewModel: VM, searchViewModel: SVM) {
+		super.init()
 		self.viewModel = viewModel
 		self.searchViewModel = searchViewModel
 	}
