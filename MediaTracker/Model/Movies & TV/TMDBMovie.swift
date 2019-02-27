@@ -48,6 +48,6 @@ extension TMDBMovie: Identifiable {
 
 extension TMDBMovie: SimpleCellViewModelMappable {
 	var asSimpleCellViewModel: SimpleCellViewModel {
-		return .init(text: title ?? "", detailText: overview ?? "", identifier: identifier)
+		return .init(imageURL: nil, text: title ?? "", detailText: overview ?? "", identifier: identifier)
 	}
 }

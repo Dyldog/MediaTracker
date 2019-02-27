@@ -223,7 +223,10 @@ extension IGDBGame: Identifiable {
 }
 
 extension IGDBGame: SimpleCellViewModelMappable {
+	func imageURL() -> URL? {
+		return URL(string: "https://images.igdb.com/igdb/image/upload/t_cover_big/\(cover!).jpg")
+	}
 	var asSimpleCellViewModel: SimpleCellViewModel {
-		return SimpleCellViewModel(text: name, detailText: name, identifier: identifier)
+		return SimpleCellViewModel(imageURL: imageURL(), text: name, detailText: name, identifier: identifier)
 	}
 }

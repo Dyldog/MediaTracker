@@ -316,16 +316,3 @@ fileprivate func newJSONEncoder() -> JSONEncoder {
 	}
 	return encoder
 }
-
-
-extension GRGoodreadsResponse: Identifiable {
-	var identifier: String {
-		return self.search.query ?? ""
-	}
-}
-
-extension GRGoodreadsResponse: SimpleCellViewModelMappable {
-	var asSimpleCellViewModel: SimpleCellViewModel {
-		return SimpleCellViewModel(text: "NOT IMPLEMENTED", detailText: "NOT IMPLEMENTED", identifier: identifier)
-	}
-}

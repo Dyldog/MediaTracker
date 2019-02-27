@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class SimpleTableViewController: UITableViewController {
 	var cellModels: [SimpleCellViewModel] = []
@@ -22,6 +23,19 @@ class SimpleTableViewController: UITableViewController {
 		
 		let cellModel = cellModels[indexPath.row]
 		
+		Alamofire.request(URL(string: "https://placekitten.com/200/300")!).responseData { [weak cell] response in
+			switch response.result {
+			case .success(let data):
+				if let image = UIImage(data: data) {
+					DispatchQueue.main.async {
+						cell?.imageView?.image = image
+						cell?.setNeedsLayout()
+					}
+				}
+			case .failure(let error): break
+			}
+		}
+		
 		cell.textLabel?.text = cellModel.text
 		cell.detailTextLabel?.text = cellModel.detailText
 		
@@ -34,5 +48,11 @@ class SimpleTableViewController: UITableViewController {
 	
 	override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
 		return UITableView.automaticDimension
+	}
+	
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let viewModel = cellModels[indexPath.row]
+		print(viewModel.identifier)
+		print(viewModel.imageURL)
 	}
 }

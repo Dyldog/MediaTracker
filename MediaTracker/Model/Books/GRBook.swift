@@ -218,6 +218,6 @@ extension GRBook: Identifiable {
 
 extension GRBook: SimpleCellViewModelMappable {
 	var asSimpleCellViewModel: SimpleCellViewModel {
-		return SimpleCellViewModel(text: bestBook.title, detailText: bestBook.author.name, identifier: identifier)
+		return SimpleCellViewModel(imageURL: nil, text: bestBook.title, detailText: bestBook.author.name, identifier: identifier)
 	}
 }

@@ -9,6 +9,7 @@
 import Foundation
 
 struct SimpleCellViewModel {
+	var imageURL: URL?
 	var text: String
 	var detailText: String
 	var identifier: String

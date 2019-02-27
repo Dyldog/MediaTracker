@@ -58,6 +58,6 @@ extension SWAPIPerson: Identifiable {
 
 extension SWAPIPerson: SimpleCellViewModelMappable {
 	var asSimpleCellViewModel: SimpleCellViewModel {
-		return SimpleCellViewModel(text: name, detailText: homeworld, identifier: identifier)
+		return SimpleCellViewModel(imageURL: nil, text: name, detailText: homeworld, identifier: identifier)
 	}
 }
