@@ -38,3 +38,14 @@ where Wrapper: Codable, Model: Identifiable, Model: SimpleCellViewModelMappable 
 		}
 	}
 }
+
+extension MappingNetworkListViewModel where Wrapper == [Model] {
+	convenience init(resultMapping: ((Wrapper) -> [Model])? = nil,
+		 cellViewModelMapping: @escaping ((Model) -> SimpleCellViewModel) = { $0.asSimpleCellViewModel },
+		 requestFactory: @escaping ((Input) -> URLRequest)) {
+		
+		self.init(resultMapping: resultMapping ?? { return $0 },
+				  cellViewModelMapping: cellViewModelMapping,
+				   requestFactory: requestFactory)
+	}
+}

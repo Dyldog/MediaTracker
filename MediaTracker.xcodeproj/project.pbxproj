@@ -26,6 +26,7 @@
 		6287830A221972940013D0B2 /* TraktResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62878309221972940013D0B2 /* TraktResponse.swift */; };
 		6287830C221972E20013D0B2 /* TraktMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287830B221972E20013D0B2 /* TraktMovie.swift */; };
 		6287830E2219730F0013D0B2 /* TraktShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287830D2219730F0013D0B2 /* TraktShow.swift */; };
+		62878310221983410013D0B2 /* OAuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287830F221983410013D0B2 /* OAuthModel.swift */; };
 		62CC36162219382A0043C8EA /* LocallyStoredListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CC36152219382A0043C8EA /* LocallyStoredListViewModel.swift */; };
 		62CC3618221938540043C8EA /* MutableListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CC3617221938540043C8EA /* MutableListViewModel.swift */; };
 		62CC361A22193AA30043C8EA /* NetworkStoredListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CC361922193AA30043C8EA /* NetworkStoredListViewModel.swift */; };
@@ -90,6 +91,7 @@
 		62878309221972940013D0B2 /* TraktResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraktResponse.swift; sourceTree = "<group>"; };
 		6287830B221972E20013D0B2 /* TraktMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraktMovie.swift; sourceTree = "<group>"; };
 		6287830D2219730F0013D0B2 /* TraktShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraktShow.swift; sourceTree = "<group>"; };
+		6287830F221983410013D0B2 /* OAuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthModel.swift; sourceTree = "<group>"; };
 		62CC36152219382A0043C8EA /* LocallyStoredListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocallyStoredListViewModel.swift; sourceTree = "<group>"; };
 		62CC3617221938540043C8EA /* MutableListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutableListViewModel.swift; sourceTree = "<group>"; };
 		62CC361922193AA30043C8EA /* NetworkStoredListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStoredListViewModel.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				6217EDD522117E0600A29361 /* APIClient.swift */,
 				6217EDCF2211626600A29361 /* StorageManager.swift */,
 				6217EDEC2211A7C800A29361 /* APIRequest.swift */,
+				6287830F221983410013D0B2 /* OAuthModel.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -519,6 +522,7 @@
 				6287830A221972940013D0B2 /* TraktResponse.swift in Sources */,
 				62E325CC2214384100321B1B /* TMDBSearchResponse.swift in Sources */,
 				6217EDCE2211621100A29361 /* ListViewController.swift in Sources */,
+				62878310221983410013D0B2 /* OAuthModel.swift in Sources */,
 				62F0F9FF2210045C00284F8C /* AppDelegate.swift in Sources */,
 				6217EDEB2211A1AC00A29361 /* GRSearchResponse.swift in Sources */,
 				62E325CE2214472100321B1B /* TMDBTVShow.swift in Sources */,

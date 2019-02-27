@@ -8,19 +8,13 @@
 
 import Foundation
 
-class NetworkStoredListViewModel<Model: Identifiable>: ListViewModel, Refreshable {
+class NetworkStoredListViewModel<Wrapper, Model: Identifiable & SimpleCellViewModelMappable>: MappingNetworkListViewModel<Void, Wrapper, Model>, MutableListViewModel where Wrapper: Codable {	
 	
-	typealias ItemType = IPArticle
+	typealias ItemType = Model
 	
-	var cellViewModels: [SimpleCellViewModel] = []
+	func addItem(_ item: Model) {}
 	
-	var apiClient: APIClient
+	func removeItem(at index: Int) {}
 	
-	init(apiClient: APIClient = APIClient()) {
-		self.apiClient = apiClient
-	}
-	
-	func refreshData(completion: () -> Void) {
-		completion()
-	}
+	func removeItem(_ item: Model) {}
 }

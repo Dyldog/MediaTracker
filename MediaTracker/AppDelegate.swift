@@ -57,7 +57,7 @@ extension AppDelegate {
 		return booksListViewController
 	}
 	
-	private func traktListViewController<Model> (_ title: String, _ icon: FontAwesomeIcon, _ searchRequest: (@escaping () -> URLRequest)) -> RefreshableListViewController<Model> where Model: Identifiable, Model: SimpleCellViewModelMappable {
+	private func traktListViewController<Model> (_ title: String, _ icon: FontAwesomeIcon, _ searchRequest: (@escaping () -> URLRequest)) -> RefreshableListViewController<TraktResponse, Model> where Model: Identifiable, Model: SimpleCellViewModelMappable {
 //		let tmdbListViewModel: LocallyStoredListViewModel<Model> = locallyStoredListViewModel()
 //		let tmdbSearchViewModel: MappingAPISearchViewModel<TMDBSearchResponse, Model> = MappingAPISearchViewModel<TMDBSearchResponse, Model>(resultMapping: { $0.results }, searchRequestFactory: searchRequest)
 		
@@ -74,18 +74,18 @@ extension AppDelegate {
 				}
 		}, requestFactory: searchRequest)
 		
-		let traktListViewController = RefreshableListViewController<Model>(viewModel: traktListViewModel)
+		let traktListViewController = RefreshableListViewController<TraktResponse, Model>(viewModel: traktListViewModel)
 		traktListViewController.title = title
 		traktListViewController.tabBarItem.image = Iconic.image(withIcon: icon, size: CGSize(width: 40, height: 30), color: .black)
 		
 		return traktListViewController
 	}
 	
-	var moviesListViewController: RefreshableListViewController<TraktMovie>  {
+	var moviesListViewController: RefreshableListViewController<TraktResponse, TraktMovie>  {
 		return traktListViewController("Movies", .filmIcon, { TraktRequests.list(ofType: .movies) })
 	}
 	
-	var tvShowListViewController: RefreshableListViewController<TraktShow> {
+	var tvShowListViewController: RefreshableListViewController<TraktResponse, TraktShow> {
 		return traktListViewController("TV", .desktopIcon, { TraktRequests.list(ofType: .tv) })
 	}
 	
@@ -96,8 +96,8 @@ extension AppDelegate {
 //		return articleViewController
 //	}
 	
-	var swapiPeopleListViewController: RefreshableListViewController<SWAPIPerson> {
-		let swapiList = RefreshableListViewController<SWAPIPerson>(
+	var swapiPeopleListViewController: RefreshableListViewController<SWAPIResponse, SWAPIPerson> {
+		let swapiList = RefreshableListViewController<SWAPIResponse, SWAPIPerson>(
 			viewModel: MappingNetworkListViewModel<Void, SWAPIResponse, SWAPIPerson>(
 				resultMapping: { $0.results },
 				requestFactory: SWAPIRequests.people))
