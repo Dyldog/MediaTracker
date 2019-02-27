@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		FontAwesomeIcon.register()
 		
 		self.window = UIWindow(rootViewController: [
-			swapiPeopleListViewController.inNavigationController,
+//			swapiPeopleListViewController.inNavigationController,
 			gamesViewController.inNavigationController,
 			booksViewController.inNavigationController,
 			moviesListViewController.inNavigationController,
