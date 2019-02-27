@@ -8,9 +8,9 @@
 
 import UIKit
 
-class StoredAPIListViewController<StoredListVM>: MutableListViewController<StoredListVM, NetworkListViewModel<String, StoredListVM.ItemType>> where StoredListVM: MutableListViewModel, StoredListVM.ItemType: Identifiable, StoredListVM.ItemType: SimpleCellViewModelMappable {
+class StoredAPIListViewController<StoredListVM, ResponseWrapper>: MutableListViewController<StoredListVM, NetworkListViewModel<String, ResponseWrapper, StoredListVM.ItemType>> where StoredListVM: MutableListViewModel, StoredListVM.ItemType: Identifiable, StoredListVM.ItemType: SimpleCellViewModelMappable, ResponseWrapper: Codable {
 	
-	init(viewModel: StoredListVM, searchViewModel: NetworkListViewModel<String, StoredListVM.ItemType>, namespace: String) {
+	init(viewModel: StoredListVM, searchViewModel: NetworkListViewModel<String, ResponseWrapper, StoredListVM.ItemType>, namespace: String) {
 		super.init(viewModel: viewModel, searchViewModel: searchViewModel)
 			// ?? StoredListViewModel(namespace: namespace) { $0.asSimpleCellViewModel }
 	}

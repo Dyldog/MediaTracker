@@ -8,10 +8,10 @@
 
 import UIKit
 
-class RefreshableListViewController<Model>: ListViewController<NetworkListViewModel<Void, Model>>
-where Model: Identifiable, Model: SimpleCellViewModelMappable {
+class RefreshableListViewController<Wrapper, Model>: ListViewController<NetworkListViewModel<Void, Wrapper, Model>>
+where Wrapper: Codable, Model: Identifiable, Model: SimpleCellViewModelMappable {
 	
-	init<ViewModel>(viewModel: ViewModel) where ViewModel: NetworkListViewModel<Void, Model> {
+	init<ViewModel>(viewModel: ViewModel) where ViewModel: NetworkListViewModel<Void, Wrapper, Model> {
 		super.init()
 		self.viewModel = viewModel
 	}

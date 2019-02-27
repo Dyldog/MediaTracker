@@ -32,8 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate {
-	var gamesViewController: StoredAPIListViewController<LocallyStoredListViewModel<IGDBGame>> {
-		let gamesListViewController = StoredAPIListViewController<LocallyStoredListViewModel<IGDBGame>>(
+	var gamesViewController: StoredAPIListViewController<LocallyStoredListViewModel<IGDBGame>, IGDBGame> {
+		let gamesListViewController = StoredAPIListViewController<LocallyStoredListViewModel<IGDBGame>, IGDBGame>(
 			viewModel: locallyStoredListViewModel(),
 			namespace: userListNamespaceKey,
 			searchRequestFactory: IGDBRequests.search)
@@ -42,12 +42,12 @@ extension AppDelegate {
 		return gamesListViewController
 	}
 	
-	var booksViewController: StoredAPIListViewController<LocallyStoredListViewModel<GRBook>> {
-		let booksSearchViewModel = MappingAPISearchViewModel<GRGoodreadsResponse, GRBook>(resultMapping: { (wrapper: GRGoodreadsResponse) in
+	var booksViewController: StoredAPIListViewController<LocallyStoredListViewModel<GRBook>, GRGoodreadsResponse> {
+		let booksSearchViewModel = APISearchViewModel<GRGoodreadsResponse, GRBook>(resultMapping: { (wrapper: GRGoodreadsResponse) in
 			wrapper.search.results?.work.compactMap { $0 } ?? []
-		}, searchRequestFactory: GRRequests.search)
+		}, requestFactory: GRRequests.search)
 		
-		let booksListViewController = StoredAPIListViewController<LocallyStoredListViewModel<GRBook>>(
+		let booksListViewController = StoredAPIListViewController<LocallyStoredListViewModel<GRBook>, GRGoodreadsResponse>(
 			viewModel: locallyStoredListViewModel(),
 			searchViewModel: booksSearchViewModel,
 			namespace: userListNamespaceKey)
@@ -57,11 +57,11 @@ extension AppDelegate {
 		return booksListViewController
 	}
 	
-	private func tmdbListViewController<Model> (_ title: String, _ icon: FontAwesomeIcon, _ searchRequest: (@escaping (String) -> URLRequest)) -> StoredAPIListViewController<LocallyStoredListViewModel<Model>> where Model: Identifiable, Model: SimpleCellViewModelMappable {
+	private func tmdbListViewController<Model> (_ title: String, _ icon: FontAwesomeIcon, _ searchRequest: (@escaping (String) -> URLRequest)) -> StoredAPIListViewController<LocallyStoredListViewModel<Model>, TMDBSearchResponse<Model>> where Model: Identifiable, Model: SimpleCellViewModelMappable {
 		let tmdbListViewModel: LocallyStoredListViewModel<Model> = locallyStoredListViewModel()
-		let tmdbSearchViewModel: MappingAPISearchViewModel<TMDBSearchResponse, Model> = MappingAPISearchViewModel<TMDBSearchResponse, Model>(resultMapping: { $0.results }, searchRequestFactory: searchRequest)
+		let tmdbSearchViewModel: APISearchViewModel<TMDBSearchResponse, Model> = APISearchViewModel<TMDBSearchResponse, Model>(resultMapping: { $0.results }, requestFactory: searchRequest)
 		
-		let tmdbListViewController: StoredAPIListViewController<LocallyStoredListViewModel<Model>> = StoredAPIListViewController<LocallyStoredListViewModel<Model>>(
+		let tmdbListViewController: StoredAPIListViewController<LocallyStoredListViewModel<Model>, TMDBSearchResponse> = StoredAPIListViewController<LocallyStoredListViewModel<Model>, TMDBSearchResponse<Model>>(
 			viewModel: tmdbListViewModel,
 			searchViewModel: tmdbSearchViewModel,
 			namespace: "\(userListNamespaceKey)_\(title)"
@@ -72,11 +72,11 @@ extension AppDelegate {
 		return tmdbListViewController
 	}
 	
-	var moviesListViewController: StoredAPIListViewController<LocallyStoredListViewModel<TMDBMovie>>  {
+	var moviesListViewController: StoredAPIListViewController<LocallyStoredListViewModel<TMDBMovie>, TMDBSearchResponse<TMDBMovie>>  {
 		return tmdbListViewController("Movies", .filmIcon, TMDBRequests.searchMovies)
 	}
 	
-	var tvShowListViewController: StoredAPIListViewController<LocallyStoredListViewModel<TMDBTVShow>> {
+	var tvShowListViewController: StoredAPIListViewController<LocallyStoredListViewModel<TMDBTVShow>, TMDBSearchResponse<TMDBTVShow>> {
 		return tmdbListViewController("TV", .desktopIcon, TMDBRequests.searchTV)
 	}
 	
@@ -87,11 +87,11 @@ extension AppDelegate {
 //		return articleViewController
 //	}
 	
-	var swapiPeopleListViewController: RefreshableListViewController<SWAPIPerson> {
-		let swapiList = RefreshableListViewController<SWAPIPerson>(
-			viewModel: MappingNetworkListViewModel<Void, SWAPIResponse, SWAPIPerson>(
+	var swapiPeopleListViewController: RefreshableListViewController<SWAPIResponse, SWAPIPerson> {
+		let swapiList = RefreshableListViewController<SWAPIResponse, SWAPIPerson>(
+			viewModel: NetworkListViewModel<Void, SWAPIResponse, SWAPIPerson>(
 				resultMapping: { $0.results },
-				searchRequestFactory: SWAPIRequests.people))
+				requestFactory: SWAPIRequests.people))
 		swapiList.title = "Star Wars"
 		swapiList.tabBarItem.image = Iconic.image(withIcon: .starIcon, size: CGSize(width: 40, height: 30), color: .black)
 		return swapiList
