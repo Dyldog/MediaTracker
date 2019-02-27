@@ -9,10 +9,12 @@
 import Foundation
 import Alamofire
 
-class NetworkListViewModel<Input, Model>: ListViewModel where Model: Identifiable, Model: SimpleCellViewModelMappable {
+class NetworkListViewModel<Input, Wrapper, Model>: ListViewModel where Wrapper: Codable, Model: Identifiable, Model: SimpleCellViewModelMappable {
 	typealias ItemType = Model
 	
 	var results: [Model] = []
+	
+	var resultMapping: (Wrapper) -> [Model]
 	
 	var cellViewModelMapping: (Model) -> SimpleCellViewModel
 	var cellViewModels: [SearchCellViewModel] = []
@@ -21,19 +23,21 @@ class NetworkListViewModel<Input, Model>: ListViewModel where Model: Identifiabl
 	let apiClient: APIClient
 	
 	init(apiClient: APIClient = APIClient(),
+		 resultMapping: ((Wrapper) -> [Model])? = nil,
 		 cellViewModelMapping: @escaping (Model) -> SimpleCellViewModel = { $0.asSimpleCellViewModel },
 		 requestFactory: @escaping ((Input) -> URLRequest)) {
 		
 		self.apiClient = apiClient
+		self.resultMapping = resultMapping ?? { $0 as! [Model] }
 		self.cellViewModelMapping = cellViewModelMapping
 		self.requestFactory = requestFactory
 	}
 	
 	func updateResults(for input: Input, completion: @escaping () -> Void) {
-		apiClient.makeRequest(requestFactory(input)) { (result: Result<[Model]>) in
+		apiClient.makeRequest(requestFactory(input)) { (result: Result<Wrapper>) in
 			switch result {
 			case .success(let object):
-				self.results = object
+				self.results = self.resultMapping(object)
 				self.cellViewModels = self.results.map(self.cellViewModelMapping)
 				
 			case .failure(let error): self.handleError(error: error)

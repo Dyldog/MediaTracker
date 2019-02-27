@@ -9,6 +9,6 @@
 import Foundation
 import Alamofire
 
-class APISearchViewModel<ResultModel>: NetworkListViewModel<String, ResultModel> where ResultModel: Identifiable, ResultModel: SimpleCellViewModelMappable {
+class APISearchViewModel<WrapperModel, ResultModel>: NetworkListViewModel<String, WrapperModel, ResultModel> where WrapperModel: Codable, ResultModel: Identifiable, ResultModel: SimpleCellViewModelMappable {
 
 }
