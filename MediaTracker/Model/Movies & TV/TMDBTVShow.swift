@@ -105,7 +105,6 @@ extension TMDBTVShow: Identifiable {
 }
 
 extension TMDBTVShow: SimpleCellViewModelMappable {
-	var asSimpleCellViewModel: SimpleCellViewModel {
-		return .init(text: name, detailText: overview, identifier: identifier)
-	}
+	var title: String { return name }
+	var subtitle: String { return overview }
 }

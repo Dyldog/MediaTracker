@@ -8,23 +8,21 @@
 
 import Foundation
 
-class LocallyStoredListViewModel<Model: Identifiable>: MutableListViewModel {
+class LocallyStoredListViewModel<Model>: MutableListViewModel where Model: SimpleCellViewModelMappable, Model: Identifiable {
 	
 	typealias ItemType = Model
-	var mapping: (Model) -> SimpleCellViewModel
 	var cellViewModels: [SimpleCellViewModel]
 	
 	var storageManager: StorageManager<Model>
 	
-	init(namespace: String, mapping: @escaping (Model) -> SimpleCellViewModel) {
+	init(namespace: String) {
 		storageManager = StorageManager(namespace: namespace)
-		cellViewModels = storageManager.loadList().map(mapping)
-		self.mapping = mapping
+		cellViewModels = storageManager.loadList().map { $0.asSimpleCellViewModel }
 	}
 	
 	func addItem(_ item: Model) {
 		storageManager.add(item)
-		cellViewModels.append(mapping(item))
+		cellViewModels.append(item.asSimpleCellViewModel)
 	}
 	
 	func removeItem(at index: Int) {

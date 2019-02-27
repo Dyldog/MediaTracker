@@ -101,10 +101,7 @@ extension AppDelegate {
 
 extension AppDelegate {
 	func locallyStoredListViewModel<T: SimpleCellViewModelMappable>() -> LocallyStoredListViewModel<T> {
-		return LocallyStoredListViewModel<T>(
-			namespace: userListNamespaceKey,
-			mapping: { $0.asSimpleCellViewModel }
-		)
+		return LocallyStoredListViewModel<T>(namespace: userListNamespaceKey)
 	}
 }
 

@@ -18,7 +18,7 @@ class StoredAPIListViewController<StoredListVM, ResponseWrapper>: MutableListVie
 	init(viewModel: StoredListVM, namespace: String, searchRequestFactory: @escaping ((String) -> URLRequest)) {
 		super.init(
 			viewModel: viewModel,
-			searchViewModel: APISearchViewModel(cellViewModelMapping: { $0.asSimpleCellViewModel }, requestFactory: searchRequestFactory)
+			searchViewModel: APISearchViewModel(requestFactory: searchRequestFactory)
 		)
 			// ?? StoredListViewModel(namespace: namespace) { $0.asSimpleCellViewModel }
 	}

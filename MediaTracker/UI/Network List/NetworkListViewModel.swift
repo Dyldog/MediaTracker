@@ -16,7 +16,6 @@ class NetworkListViewModel<Input, Wrapper, Model>: ListViewModel where Wrapper: 
 	
 	var resultMapping: (Wrapper) -> [Model]
 	
-	var cellViewModelMapping: (Model) -> SimpleCellViewModel
 	var cellViewModels: [SearchCellViewModel] = []
 	var requestFactory: ((Input) -> URLRequest)
 	
@@ -24,12 +23,10 @@ class NetworkListViewModel<Input, Wrapper, Model>: ListViewModel where Wrapper: 
 	
 	init(apiClient: APIClient = APIClient(),
 		 resultMapping: ((Wrapper) -> [Model])? = nil,
-		 cellViewModelMapping: @escaping (Model) -> SimpleCellViewModel = { $0.asSimpleCellViewModel },
 		 requestFactory: @escaping ((Input) -> URLRequest)) {
 		
 		self.apiClient = apiClient
 		self.resultMapping = resultMapping ?? { $0 as! [Model] }
-		self.cellViewModelMapping = cellViewModelMapping
 		self.requestFactory = requestFactory
 	}
 	
@@ -38,7 +35,9 @@ class NetworkListViewModel<Input, Wrapper, Model>: ListViewModel where Wrapper: 
 			switch result {
 			case .success(let object):
 				self.results = self.resultMapping(object)
-				self.cellViewModels = self.results.map(self.cellViewModelMapping)
+				self.cellViewModels = self.results.map {
+					SimpleCellViewModel(text: $0.title, detailText: $0.subtitle, identifier: $0.identifier)
+				}
 				
 			case .failure(let error): self.handleError(error: error)
 			}

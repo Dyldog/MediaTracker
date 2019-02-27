@@ -13,3 +13,17 @@ struct SimpleCellViewModel {
 	var detailText: String
 	var identifier: String
 }
+
+protocol SimpleCellViewModelMappable {
+	var title: String { get }
+	var subtitle: String { get }
+	var identifier: String { get }
+	
+	var asSimpleCellViewModel: SimpleCellViewModel { get }
+}
+
+extension SimpleCellViewModelMappable {
+	var asSimpleCellViewModel: SimpleCellViewModel {
+		return SimpleCellViewModel(text: title, detailText: subtitle, identifier: identifier)
+	}
+}

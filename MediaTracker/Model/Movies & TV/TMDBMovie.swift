@@ -13,7 +13,7 @@ struct TMDBMovie: Codable, Equatable {
 	let id: Int
 	let video: Bool?
 	let voteAverage: Double?
-	let title: String?
+	let title: String
 	let popularity: Double?
 	let posterPath: String?
 	let originalLanguage: String?
@@ -46,8 +46,6 @@ extension TMDBMovie: Identifiable {
 	var identifier: String { return "\(id)" }
 }
 
-extension TMDBMovie: SimpleCellViewModelMappable {
-	var asSimpleCellViewModel: SimpleCellViewModel {
-		return .init(text: title ?? "", detailText: overview ?? "", identifier: identifier)
-	}
+extension TMDBMovie: SimpleCellViewModelMappable {	
+	var subtitle: String { return overview ?? "" }
 }

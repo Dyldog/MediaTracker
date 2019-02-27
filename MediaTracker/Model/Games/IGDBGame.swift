@@ -223,7 +223,6 @@ extension IGDBGame: Identifiable {
 }
 
 extension IGDBGame: SimpleCellViewModelMappable {
-	var asSimpleCellViewModel: SimpleCellViewModel {
-		return SimpleCellViewModel(text: name, detailText: name, identifier: identifier)
-	}
+	var title: String { return name }
+	var subtitle: String { return name }
 }
