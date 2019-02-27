@@ -32,8 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate {
-	var gamesViewController: StoredAPIListViewController<LocallyStoredListViewModel<IGDBGame>, IGDBGame> {
-		let gamesListViewController = StoredAPIListViewController<LocallyStoredListViewModel<IGDBGame>, IGDBGame>(
+	var gamesViewController: StoredAPIListViewController<LocallyStoredListViewModel<IGDBGame>, [IGDBGame]> {
+		let gamesListViewController = StoredAPIListViewController<LocallyStoredListViewModel<IGDBGame>, [IGDBGame]>(
 			viewModel: locallyStoredListViewModel(),
 			namespace: userListNamespaceKey,
 			searchRequestFactory: IGDBRequests.search)
