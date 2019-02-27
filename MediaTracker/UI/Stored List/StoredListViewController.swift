@@ -12,7 +12,6 @@ class StoredAPIListViewController<StoredListVM, ResponseWrapper>: MutableListVie
 	
 	init(viewModel: StoredListVM, searchViewModel: NetworkListViewModel<String, ResponseWrapper, StoredListVM.ItemType>, namespace: String) {
 		super.init(viewModel: viewModel, searchViewModel: searchViewModel)
-			// ?? StoredListViewModel(namespace: namespace) { $0.asSimpleCellViewModel }
 	}
 	
 	init(viewModel: StoredListVM, namespace: String, searchRequestFactory: @escaping ((String) -> URLRequest)) {
@@ -20,7 +19,6 @@ class StoredAPIListViewController<StoredListVM, ResponseWrapper>: MutableListVie
 			viewModel: viewModel,
 			searchViewModel: APISearchViewModel(requestFactory: searchRequestFactory)
 		)
-			// ?? StoredListViewModel(namespace: namespace) { $0.asSimpleCellViewModel }
 	}
 	
 	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
