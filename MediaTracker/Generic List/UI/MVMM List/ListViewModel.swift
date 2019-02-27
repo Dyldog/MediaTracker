@@ -9,7 +9,7 @@
 import Foundation
 
 protocol ListViewModel {
-	associatedtype ItemType
+	associatedtype ItemType: SimpleCellViewModelMappable
 	
 	var cellViewModels: [SimpleCellViewModel] { get }
 }

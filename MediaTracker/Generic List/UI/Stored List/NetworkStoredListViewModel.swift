@@ -8,9 +8,9 @@
 
 import Foundation
 
-class NetworkStoredListViewModel<Model: Identifiable>: ListViewModel, Refreshable {
+class NetworkStoredListViewModel<Model: SimpleCellViewModelMappable>: ListViewModel, Refreshable {
 	
-	typealias ItemType = IPArticle
+	typealias ItemType = Model
 	
 	var cellViewModels: [SimpleCellViewModel] = []
 	

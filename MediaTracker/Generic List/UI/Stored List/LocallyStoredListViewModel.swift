@@ -20,9 +20,13 @@ class LocallyStoredListViewModel<Model>: MutableListViewModel where Model: Simpl
 		cellViewModels = storageManager.loadList().map { $0.asSimpleCellViewModel }
 	}
 	
-	func addItem(_ item: Model) {
+	func addItem(_ item: Model) -> MutableListViewModelError? {
+		guard cellViewModels.first(where: { $0.identifier == item.identifier }) == nil else { return .alreadyExists }
+		
 		storageManager.add(item)
 		cellViewModels.append(item.asSimpleCellViewModel)
+		
+		return nil
 	}
 	
 	func removeItem(at index: Int) {

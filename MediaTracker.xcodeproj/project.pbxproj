@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6205B1DA2226AF7200AEA78C /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6205B1D92226AF7200AEA78C /* UIViewController.swift */; };
 		6217EDCC221161EE00A29361 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6217EDCB221161EE00A29361 /* ListViewModel.swift */; };
 		6217EDCE2211621100A29361 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6217EDCD2211621100A29361 /* ListViewController.swift */; };
 		6217EDD02211626600A29361 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6217EDCF2211626600A29361 /* StorageManager.swift */; };
@@ -65,6 +66,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6205B1D92226AF7200AEA78C /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		6217EDCB221161EE00A29361 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		6217EDCD2211621100A29361 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		6217EDCF2211626600A29361 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
@@ -131,6 +133,23 @@
 				F7525B89277C0929D12C7ABC /* Pods-MediaTracker.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		6205B1D72226AF4A00AEA78C /* Generic List */ = {
+			isa = PBXGroup;
+			children = (
+				6217EDE422118A7100A29361 /* UI */,
+				6217EDC82211580B00A29361 /* Data */,
+			);
+			path = "Generic List";
+			sourceTree = "<group>";
+		};
+		6205B1D82226AF6200AEA78C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6205B1D92226AF7200AEA78C /* UIViewController.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		6217EDC2221157D000A29361 /* Search Results List */ = {
@@ -304,8 +323,8 @@
 			isa = PBXGroup;
 			children = (
 				62F0F9FE2210045C00284F8C /* AppDelegate.swift */,
-				6217EDE422118A7100A29361 /* UI */,
-				6217EDC82211580B00A29361 /* Data */,
+				6205B1D82226AF6200AEA78C /* Extensions */,
+				6205B1D72226AF4A00AEA78C /* Generic List */,
 				6217EDC6221157F600A29361 /* Model */,
 				62F0FA022210045C00284F8C /* Main.storyboard */,
 				62F0FA052210045E00284F8C /* Assets.xcassets */,
@@ -474,6 +493,7 @@
 				62E325CA2214375000321B1B /* TMDBRequests.swift in Sources */,
 				62F0FA012210045C00284F8C /* SearchResultsViewController.swift in Sources */,
 				62CC36162219382A0043C8EA /* LocallyStoredListViewModel.swift in Sources */,
+				6205B1DA2226AF7200AEA78C /* UIViewController.swift in Sources */,
 				62F0FA1A2210087900284F8C /* Secrets.swift in Sources */,
 				62CC362A2219477F0043C8EA /* IPArticle.swift in Sources */,
 				62CC3624221946660043C8EA /* MutableListViewController.swift in Sources */,

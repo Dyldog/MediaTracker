@@ -42,7 +42,11 @@ class MutableListViewController<VM: MutableListViewModel, SVM: SearchViewModel>:
 	
 	func userDidSelectResult(result: VM.ItemType) {
 		searchController.isActive = false
-		viewModel.addItem(result)
+		if let error = viewModel.addItem(result) {
+			switch error {
+			case .alreadyExists: alert(title: "Already Exists", message: "\"\(result.title)\" is already in your list")
+			}
+		}
 		tableView.reloadData()
 	}
 }

@@ -8,8 +8,13 @@
 
 import Foundation
 
+enum MutableListViewModelError: Error {
+	case alreadyExists
+}
+
 protocol MutableListViewModel: ListViewModel {
-	func addItem(_ item: ItemType)
+	
+	func addItem(_ item: ItemType) -> MutableListViewModelError?
 	func removeItem(at index: Int)
 	func removeItem(_ item: ItemType)
 }
